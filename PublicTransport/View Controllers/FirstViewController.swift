@@ -7,11 +7,8 @@
 //
 
 import UIKit
-import CoreLocation
 
-class FirstViewController: UIViewController, CLLocationManagerDelegate {
-    var locationManager = CLLocationManager()
-    private var startTime: Date?
+class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,61 +21,6 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        determineCurrentLocation()
-    }
-    
-    
-    func determineCurrentLocation() {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 100
-        locationManager.allowsBackgroundLocationUpdates = true
-        
-        locationManager.requestAlwaysAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-            //locationManager.startUpdatingHeading()
-        }
-    }
-    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        let userLocation:CLLocation = locations[0] as CLLocation
-//
-//        // Call stopUpdatingLocation() to stop listening for location updates,
-//        // other wise this function will be called every time when user location changes.
-//
-//        // manager.stopUpdatingLocation()
-//
-//        print("user latitude = \(userLocation.coordinate.latitude)")
-//        print("user longitude = \(userLocation.coordinate.longitude)")
-//    }
-//
-//    func printLocation(location: CLLocation) {
-//        print("user latitude = \(location.coordinate.latitude)")
-//        print("user longitude = \(location.coordinate.longitude)")
-//        print("==============================")
-//    }
-//
-//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
-//    {
-//        print("Error \(error)")
-//    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if locations.count == 0 {
-            return
-        }
-        
-        let lastloc = locations.last
-        if lastloc == nil {
-            return
-        }
-        
-        print( String(lastloc!.coordinate.latitude))
-        print(String(lastloc!.coordinate.longitude))
-        
     }
 }
 
