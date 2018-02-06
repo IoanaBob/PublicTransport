@@ -15,6 +15,7 @@
 		7C119BA82028BDFE0016BCDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C119BA62028BDFE0016BCDB /* LaunchScreen.storyboard */; };
 		7C119BB32028BDFE0016BCDB /* PublicTransportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119BB22028BDFE0016BCDB /* PublicTransportTests.swift */; };
 		7C119BBE2028BDFF0016BCDB /* PublicTransportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119BBD2028BDFF0016BCDB /* PublicTransportUITests.swift */; };
+		7CDD046B202A1848002451EF /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDD046A202A1848002451EF /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		7C119BB92028BDFF0016BCDB /* PublicTransportUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PublicTransportUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C119BBD2028BDFF0016BCDB /* PublicTransportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTransportUITests.swift; sourceTree = "<group>"; };
 		7C119BBF2028BDFF0016BCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CDD046A202A1848002451EF /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +101,9 @@
 		7C119B9A2028BDFE0016BCDB /* PublicTransport */ = {
 			isa = PBXGroup;
 			children = (
+				7C728538202A0DA10029C7D0 /* Models */,
+				7C728537202A0D840029C7D0 /* View Controllers */,
 				7C119B9B2028BDFE0016BCDB /* AppDelegate.swift */,
-				7C119B9D2028BDFE0016BCDB /* FirstViewController.swift */,
-				7C119B9F2028BDFE0016BCDB /* SecondViewController.swift */,
 				7C119BA12028BDFE0016BCDB /* Main.storyboard */,
 				7C119BA42028BDFE0016BCDB /* Assets.xcassets */,
 				7C119BA62028BDFE0016BCDB /* LaunchScreen.storyboard */,
@@ -126,6 +128,23 @@
 				7C119BBF2028BDFF0016BCDB /* Info.plist */,
 			);
 			path = PublicTransportUITests;
+			sourceTree = "<group>";
+		};
+		7C728537202A0D840029C7D0 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7C119B9D2028BDFE0016BCDB /* FirstViewController.swift */,
+				7C119B9F2028BDFE0016BCDB /* SecondViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		7C728538202A0DA10029C7D0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7CDD046A202A1848002451EF /* Location.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +216,11 @@
 					7C119B972028BDFE0016BCDB = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					7C119BAD2028BDFE0016BCDB = {
 						CreatedOnToolsVersion = 9.2;
@@ -264,6 +288,7 @@
 			files = (
 				7C119BA02028BDFE0016BCDB /* SecondViewController.swift in Sources */,
 				7C119B9C2028BDFE0016BCDB /* AppDelegate.swift in Sources */,
+				7CDD046B202A1848002451EF /* Location.swift in Sources */,
 				7C119B9E2028BDFE0016BCDB /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,7 +459,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SPM5P9EZ42;
 				INFOPLIST_FILE = PublicTransport/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iosb.PublicTransport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -452,7 +477,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SPM5P9EZ42;
 				INFOPLIST_FILE = PublicTransport/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iosb.PublicTransport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
