@@ -72,8 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     private func printLocation(_ location: CLLocation) {
         print("user latitude = \(location.coordinate.latitude)")
         print("user longitude = \(location.coordinate.longitude)")
-        
-        
+
         BusStations.allBusStations(lat: Float(location.coordinate.latitude), long: Float(location.coordinate.longitude)) { (busStations, error) in
             if let error = error {
                 // got an error in getting the data
