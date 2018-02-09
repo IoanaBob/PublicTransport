@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var window: UIWindow?
     
     var locationManager = CLLocationManager()
-    var locations = [Location]()
+    var significantLocations = Locations()
     //private var startTime: Date?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         locationManager = CLLocationManager()
         locationManager.delegate = self as CLLocationManagerDelegate
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 5
+        locationManager.distanceFilter = 2
         locationManager.allowsBackgroundLocationUpdates = true
         
         locationManager.requestAlwaysAuthorization()
@@ -62,31 +62,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         if lastloc == nil {
             return
         }
-        printLocation(lastloc!)
+        addSignificantLocation(manager: manager, location: lastloc!)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
     
-    private func printLocation(_ location: CLLocation) {
+    private func addSignificantLocation(manager: CLLocationManager , location: CLLocation) {
         print("user latitude = \(location.coordinate.latitude)")
         print("user longitude = \(location.coordinate.longitude)")
+        print("speed = \(manager.location?.speed ?? 0)")
+        let currentLocation = Location.init(coordinates: location, nearestBusStation: nil, time: NSDate(), currentSpeed: (manager.location?.speed)!)
 
-        BusStations.allBusStations(lat: Float(location.coordinate.latitude), long: Float(location.coordinate.longitude)) { (busStations, error) in
-            if let error = error {
-                // got an error in getting the data
-                print(error)
-                return
-            }
-            guard let busStations = busStations else {
-                print("error getting all: result is nil")
-                return
-            }
-            debugPrint(busStations.stops)
-        }
+        significantLocations.addLocationIfSignificant(loc: currentLocation)
+//        BusStations.allBusStations(lat: Float(location.coordinate.latitude), long: Float(location.coordinate.longitude)) { (busStations, error) in
+//            if let error = error {
+//                // got an error in getting the data
+//                print(error)
+//                return
+//            }
+//            guard let busStations = busStations else {
+//                print("error getting all: result is nil")
+//                return
+//            }
+//            debugPrint(busStations.stops)
+//        }
         // BusStations.getAllBusStations(lat: Float(location.coordinate.latitude), long: Float(location.coordinate.longitude))
         print("==============================")
     }
+    
+
 }
 

@@ -25,6 +25,10 @@ struct BusStation: Codable {
     let longitude: Float
     let latitude: Float
     let distance: Int
+    
+    func isWithin10Meters() -> Bool{
+        return distance < 11
+    }
 }
 
 struct BusStations:Codable {
