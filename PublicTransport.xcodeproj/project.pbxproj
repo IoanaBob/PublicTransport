@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F767079202B66020074D848 /* BusStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F767078202B66020074D848 /* BusStation.swift */; };
+		4FBFD92D20310D7B000BFAF9 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBFD92C20310D7B000BFAF9 /* extensions.swift */; };
 		7C119B9C2028BDFE0016BCDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9B2028BDFE0016BCDB /* AppDelegate.swift */; };
 		7C119B9E2028BDFE0016BCDB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9D2028BDFE0016BCDB /* FirstViewController.swift */; };
 		7C119BA02028BDFE0016BCDB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9F2028BDFE0016BCDB /* SecondViewController.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		4F767078202B66020074D848 /* BusStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStation.swift; sourceTree = "<group>"; };
+		4FBFD92C20310D7B000BFAF9 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		7C119B982028BDFE0016BCDB /* PublicTransport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PublicTransport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C119B9B2028BDFE0016BCDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C119B9D2028BDFE0016BCDB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FBFD92B20310D62000BFAF9 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				4FBFD92C20310D7B000BFAF9 /* extensions.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		7C119B8F2028BDFE0016BCDB = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +113,7 @@
 		7C119B9A2028BDFE0016BCDB /* PublicTransport */ = {
 			isa = PBXGroup;
 			children = (
+				4FBFD92B20310D62000BFAF9 /* New Group */,
 				7C728538202A0DA10029C7D0 /* Models */,
 				7C728537202A0D840029C7D0 /* View Controllers */,
 				7C119B9B2028BDFE0016BCDB /* AppDelegate.swift */,
@@ -294,6 +305,7 @@
 				4F767079202B66020074D848 /* BusStation.swift in Sources */,
 				7CDD046B202A1848002451EF /* Location.swift in Sources */,
 				7C119B9E2028BDFE0016BCDB /* FirstViewController.swift in Sources */,
+				4FBFD92D20310D7B000BFAF9 /* extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

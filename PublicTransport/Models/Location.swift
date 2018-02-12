@@ -29,6 +29,7 @@ struct Location: Equatable {
     let time: NSDate
     let currentSpeed: Double
     var note:busNotes = .none
+    var delay:Int = 0
     
     func existentBusStation() -> Bool {
         return nearestBusStation != nil
@@ -99,30 +100,5 @@ class Locations {
         let lastTime = locations.last!.time as CFDate
         let currentTime = loc.time as CFDate
         return CFDateGetTimeIntervalSinceDate(lastTime, currentTime)
-    }
-}
-
-extension Collection where Iterator.Element: Equatable {
-    typealias Element = Self.Iterator.Element
-    
-    func safeIndex(after index: Index) -> Index? {
-        let nextIndex = self.index(after: index)
-        return (nextIndex < self.endIndex) ? nextIndex : nil
-    }
-    
-    func index(afterWithWrapAround index: Index) -> Index {
-        return self.safeIndex(after: index) ?? self.startIndex
-    }
-    
-    func item(after item: Element) -> Element? {
-        return self.index(of: item)
-            .flatMap(self.safeIndex(after:))
-            .map{ self[$0] }
-    }
-    
-    func item(afterWithWrapAround item: Element) -> Element? {
-        return self.index(of: item)
-            .map(self.index(afterWithWrapAround:))
-            .map{ self[$0] }
     }
 }

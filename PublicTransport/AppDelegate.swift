@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     var locationManager = CLLocationManager()
     var significantLocations = Locations()
-    //let defaults = UserDefaults.standard
+    let defaults = UserDefaults.standard
     
     //private var startTime: Date?
 
@@ -61,25 +61,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         if locations.count == 0 {
             return
         }
-        let lastloc = locations.last
-        if lastloc == nil {
-            return
-        }
-        addSignificantLocation(manager: manager, location: lastloc!)
+        guard let lastloc = locations.last else { return }
+        
+        print("user latitude = \(lastloc.coordinate.latitude)")
+        print("user longitude = \(lastloc.coordinate.longitude)")
+        print("speed = \(manager.location?.speed ?? 0)")
+        print("==============================")
+        
+        // create two inits for cleaner initializations - nearestbus, note, delay not necessary
+        let currentLocation = Location.init(theLocation: lastloc, nearestBusStation: nil, time: NSDate(), currentSpeed: (manager.location?.speed)!, note: .none, delay: 0)
+        significantLocations.addLocationIfSignificant(loc: currentLocation)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
     
-    private func addSignificantLocation(manager: CLLocationManager , location: CLLocation) {
-        print("user latitude = \(location.coordinate.latitude)")
-        print("user longitude = \(location.coordinate.longitude)")
-        print("speed = \(manager.location?.speed ?? 0)")
-        print("==============================")
+    func addBusDelays(_ locs: [Location]) -> [Location] {
+        // should I cache?
+        return locs
+    }
+    
+    func saveToDefaults(_ locs: [Location]) {
+        let updatedLocations = addBusDelays(locs)
+        for location in updatedLocations {
+            // add to persistent memory
+            //defaults.set(<#T##value: Float##Float#>, forKey: <#T##String#>)
+        }
+    }
+    
+    func clearMemory() {
         
-        let currentLocation = Location.init(theLocation: location, nearestBusStation: nil, time: NSDate(), currentSpeed: (manager.location?.speed)!, note: .none)
-        significantLocations.addLocationIfSignificant(loc: currentLocation)
     }
 }
 
