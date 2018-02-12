@@ -29,7 +29,7 @@ struct Location: Equatable {
     let time: NSDate
     let currentSpeed: Double
     var note:busNotes = .none
-    var delay:Int = 0
+    //var delay:Int = 0
     
     func existentBusStation() -> Bool {
         return nearestBusStation != nil
@@ -68,7 +68,7 @@ class Locations {
                     print("error getting all: result is nil")
                     return
                 }
-                print(busStations.stops)
+                //print(busStations.stops)
                 if !busStations.stops.isEmpty || self.locations.isEmpty {
                     var mutatedLoc = loc
                     mutatedLoc.nearestBusStation = !self.locations.isEmpty ? busStations.stops.first! : nil

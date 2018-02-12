@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         print("==============================")
         
         // create two inits for cleaner initializations - nearestbus, note, delay not necessary
-        let currentLocation = Location.init(theLocation: lastloc, nearestBusStation: nil, time: NSDate(), currentSpeed: (manager.location?.speed)!, note: .none, delay: 0)
+        let currentLocation = Location.init(theLocation: lastloc, nearestBusStation: nil, time: NSDate(), currentSpeed: (manager.location?.speed)!, note: .none)
         significantLocations.addLocationIfSignificant(loc: currentLocation)
     }
     
@@ -77,16 +77,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         print("Error \(error)")
     }
     
-    func addBusDelays(_ locs: [Location]) -> [Location] {
-        // should I cache?
-        return locs
-    }
+//    func addBusDelays(_ locs: [Location]) -> [Location] {
+//        // should I cache?
+//        return locs
+//    }
     
     func saveToDefaults(_ locs: [Location]) {
-        let updatedLocations = addBusDelays(locs)
-        for location in updatedLocations {
+        //let updatedLocations = addBusDelays(locs)
+        var busStopTimes = defaults.array(forKey: "busStopTimes") ?? []
+        for location in locs {
             // add to persistent memory
-            //defaults.set(<#T##value: Float##Float#>, forKey: <#T##String#>)
+            switch location.note {
+            case .leftStation:
+                // take current location
+                busStopTimes.append(location)
+            case .arrivedStation:
+                guard let nextLocation = locs.item(after: location) else { return }
+                if nextLocation.note == .leftStation {
+                    // do nothing
+                    break
+                }
+                else {
+                    // take current location
+                    busStopTimes.append(location)
+                }
+            case .none: break // do nothing
+            }
+            defaults.set(busStopTimes, forKey: "busStopTimes")
         }
     }
     

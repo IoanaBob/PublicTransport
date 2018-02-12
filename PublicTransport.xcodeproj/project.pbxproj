@@ -82,12 +82,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4FBFD92B20310D62000BFAF9 /* New Group */ = {
+		4FBFD92B20310D62000BFAF9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				4FBFD92C20310D7B000BFAF9 /* extensions.swift */,
 			);
-			path = "New Group";
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		7C119B8F2028BDFE0016BCDB = {
@@ -113,7 +113,7 @@
 		7C119B9A2028BDFE0016BCDB /* PublicTransport */ = {
 			isa = PBXGroup;
 			children = (
-				4FBFD92B20310D62000BFAF9 /* New Group */,
+				4FBFD92B20310D62000BFAF9 /* Helpers */,
 				7C728538202A0DA10029C7D0 /* Models */,
 				7C728537202A0D840029C7D0 /* View Controllers */,
 				7C119B9B2028BDFE0016BCDB /* AppDelegate.swift */,
@@ -470,12 +470,14 @@
 		7C119BC32028BDFF0016BCDB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SPM5P9EZ42;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				INFOPLIST_FILE = PublicTransport/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iosb.PublicTransport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -488,12 +490,14 @@
 		7C119BC42028BDFF0016BCDB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SPM5P9EZ42;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				INFOPLIST_FILE = PublicTransport/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iosb.PublicTransport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
