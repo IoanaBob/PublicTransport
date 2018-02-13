@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         print("==============================")
         
         // create two inits for cleaner initializations - nearestbus, note, delay not necessary
-        let currentLocation = Location.init(theLocation: lastloc, nearestBusStation: nil, time: NSDate(), currentSpeed: (manager.location?.speed)!, note: .none)
+        let currentLocation = Location.init(theLocation: lastloc, currentSpeed: (manager.location?.speed)!)
         significantLocations.addLocationIfSignificant(loc: currentLocation)
     }
     
@@ -111,4 +111,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
     }
 }
-

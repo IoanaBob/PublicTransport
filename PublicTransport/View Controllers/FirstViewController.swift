@@ -14,15 +14,17 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var items: [String] = ["We", "Heart", "Swift"]
     let sections = ["Bus leaving times", "All Locations"]
-    let busStopTimes:[Location] = defaults.array(forKey: "busStopTimes") as? [Location] ?? []
-    let allLocations:[Location] = defaults.array(forKey: "allLocations") as? [Location] ?? []
+    var busStopTimes:[Location] = [] //defaults.array(forKey: "busStopTimes") as? [Location] ?? []
+    var allLocations:[Location] = [] //defaults.array(forKey: "allLocations") as? [Location] ?? []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         busStopTimesTableView.delegate = self
         busStopTimesTableView.dataSource = self
         busStopTimesTableView.addSubview(refreshControl)
-//        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "busStopTime")
+        
+        busStopTimes = loadObjectArray(forKey: "busStopTimes")
+        allLocations = loadObjectArray(forKey: "allLocations")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +90,14 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
 
         return dateFormatter.string(from: date as Date)
+    }
+    
+    private func loadObjectArray(forKey key: String) -> [Location] {
+        let data = defaults.object(forKey: key) as? Data
+        if data == nil {
+            return []
+        }
+        return NSKeyedUnarchiver.unarchiveObject(with: data!) as! [Location]
     }
 }
 

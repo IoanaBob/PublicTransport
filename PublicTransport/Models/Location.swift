@@ -14,22 +14,47 @@ let defaults = UserDefaults.standard
 
 
 
-struct Location: Equatable {
-    static func ==(lhs: Location, rhs: Location) -> Bool {
-        return lhs.theLocation == rhs.theLocation
-    }
-    
-    enum busNotes {
-        case leftStation, arrivedStation, none
-    }
-    
+class Location: NSCoding, Equatable {
     let theLocation: CLLocation
+    //lat and long instead of CLLocation? how to?
+    
     // information from Transport API
     var nearestBusStation: BusStation? = nil
     let time: NSDate
     let currentSpeed: Double
     var note:busNotes = .none
-    //var delay:Int = 0
+    
+    static func ==(lhs: Location, rhs: Location) -> Bool {
+        return lhs.theLocation == rhs.theLocation
+    }
+    
+    init(theLocation: CLLocation, currentSpeed: Double) {
+        self.theLocation = theLocation
+        self.nearestBusStation = nil
+        self.time = NSDate()
+        self.currentSpeed = currentSpeed
+        self.note = .none
+    }
+    
+    init(theLocation: CLLocation, nearestBusStation: BusStation, note: busNotes, currentSpeed: Double) {
+        self.theLocation = theLocation
+        self.nearestBusStation = nearestBusStation
+        self.time = NSDate()
+        self.currentSpeed = currentSpeed
+        self.note = note
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        <#code#>
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        <#code#>
+    }
+    
+    enum busNotes {
+        case leftStation, arrivedStation, none
+    }
     
     func existentBusStation() -> Bool {
         return nearestBusStation != nil
@@ -74,6 +99,8 @@ class Locations {
                     mutatedLoc.nearestBusStation = !self.locations.isEmpty ? busStations.stops.first! : nil
                     self.locations.append(mutatedLoc)
                     print(self.locations)
+                    let locationsData = NSKeyedArchiver.archivedData(withRootObject: self.locations)
+                    defaults.set(locationsData, forKey: "allLocations")
                 }
             }
         }
