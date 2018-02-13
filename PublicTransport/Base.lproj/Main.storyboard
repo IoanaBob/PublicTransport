@@ -70,6 +70,58 @@
                                             <outlet property="time" destination="ogT-pL-8O1" id="u5v-RF-0Zw"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="Ays-MD-UT5" customClass="BusStationCell" customModule="PublicTransport" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="98" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ays-MD-UT5" id="lH0-ax-2Kf">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmh-Ru-ejm">
+                                                    <rect key="frame" x="14" y="38" width="147" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="dGr-Qd-3II"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bus Station" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXj-y9-Ibc">
+                                                    <rect key="frame" x="14" y="11" width="104" height="19"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Speed" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="es6-oP-Mgo">
+                                                    <rect key="frame" x="238" y="38" width="122" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uab-9t-6ZY">
+                                                    <rect key="frame" x="238" y="10" width="122" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dmh-Ru-ejm" firstAttribute="top" secondItem="XXj-y9-Ibc" secondAttribute="bottom" constant="8" id="TAK-db-LXi"/>
+                                                <constraint firstItem="XXj-y9-Ibc" firstAttribute="leading" secondItem="lH0-ax-2Kf" secondAttribute="leadingMargin" constant="-1" id="WjE-ow-Y65"/>
+                                                <constraint firstItem="XXj-y9-Ibc" firstAttribute="top" secondItem="lH0-ax-2Kf" secondAttribute="topMargin" id="cQd-OH-KnE"/>
+                                                <constraint firstItem="dmh-Ru-ejm" firstAttribute="bottom" secondItem="lH0-ax-2Kf" secondAttribute="bottomMargin" id="idr-Pc-NAF"/>
+                                                <constraint firstItem="dmh-Ru-ejm" firstAttribute="leading" secondItem="XXj-y9-Ibc" secondAttribute="leading" id="zAL-dj-pXC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="busStation" destination="XXj-y9-Ibc" id="5G5-1n-dlD"/>
+                                            <outlet property="distance" destination="Uab-9t-6ZY" id="2Zr-Ae-gCG"/>
+                                            <outlet property="speed" destination="es6-oP-Mgo" id="OBl-iI-MDu"/>
+                                            <outlet property="time" destination="dmh-Ru-ejm" id="uFA-NY-XXY"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
