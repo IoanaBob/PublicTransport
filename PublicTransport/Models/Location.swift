@@ -14,45 +14,38 @@ let defaults = UserDefaults.standard
 
 
 
-class Location: NSCoding, Equatable {
-    let theLocation: CLLocation
-    //lat and long instead of CLLocation? how to?
-    
+struct Location: Codable, Equatable {
+    let lat: Double
+    let long: Double
+    let time: Date
+    let currentSpeed: Double
     // information from Transport API
     var nearestBusStation: BusStation? = nil
-    let time: NSDate
-    let currentSpeed: Double
     var note:busNotes = .none
     
     static func ==(lhs: Location, rhs: Location) -> Bool {
-        return lhs.theLocation == rhs.theLocation
+        return lhs.lat == rhs.lat && lhs.long == rhs.long
     }
     
-    init(theLocation: CLLocation, currentSpeed: Double) {
-        self.theLocation = theLocation
+    init(lat: Double, long: Double, currentSpeed: Double) {
+        self.lat = lat
+        self.long = long
         self.nearestBusStation = nil
-        self.time = NSDate()
+        self.time = NSDate() as Date
         self.currentSpeed = currentSpeed
         self.note = .none
     }
     
-    init(theLocation: CLLocation, nearestBusStation: BusStation, note: busNotes, currentSpeed: Double) {
-        self.theLocation = theLocation
+    init(lat: Double, long: Double, nearestBusStation: BusStation, note: busNotes, currentSpeed: Double) {
+        self.lat = lat
+        self.long = long
         self.nearestBusStation = nearestBusStation
-        self.time = NSDate()
+        self.time = NSDate() as Date
         self.currentSpeed = currentSpeed
         self.note = note
     }
     
-    func encode(with aCoder: NSCoder) {
-        <#code#>
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        <#code#>
-    }
-    
-    enum busNotes {
+    enum busNotes: String, Codable {
         case leftStation, arrivedStation, none
     }
     
@@ -80,8 +73,8 @@ class Locations {
     
     func addLocationIfSignificant(loc: Location) {
         if locations.isEmpty || (timeFromLastLocation(loc) > 60 && loc.currentSpeed <= walkingSpeedTreshold) || (timeFromLastLocation(loc) > 30 && loc.currentSpeed > walkingSpeedTreshold) {
-            let lat = Float(loc.theLocation.coordinate.latitude)
-            let long =  Float(loc.theLocation.coordinate.longitude)
+            let lat = Float(loc.lat)
+            let long =  Float(loc.long)
             // calls function using completion handler in order to add new location
             BusStations.allBusStations(lat: lat, long: long) { (busStations, error) in
                 if let error = error {
@@ -99,8 +92,7 @@ class Locations {
                     mutatedLoc.nearestBusStation = !self.locations.isEmpty ? busStations.stops.first! : nil
                     self.locations.append(mutatedLoc)
                     print(self.locations)
-                    let locationsData = NSKeyedArchiver.archivedData(withRootObject: self.locations)
-                    defaults.set(locationsData, forKey: "allLocations")
+                    self.saveToDefaults(self.locations)
                 }
             }
         }
@@ -120,6 +112,13 @@ class Locations {
             }
         }
         return inStationAtLocations
+    }
+    
+    private func saveToDefaults(_ objects: [Location]) {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(objects){
+            UserDefaults.standard.set(encoded, forKey: "allLocations")
+        }
     }
     
     private func timeFromLastLocation(_ loc: Location) -> Double {

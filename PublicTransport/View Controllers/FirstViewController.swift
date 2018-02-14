@@ -32,28 +32,28 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return busStopTimes.count
+        switch section {
+        case 0: return busStopTimes.count
+        case 1: return allLocations.count
+        default: return 0
         }
-        else if section == 1 {
-            return allLocations.count
-        }
-        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell:BusStationCell = tableView.dequeueReusableCell(withIdentifier: "allLocations") as! BusStationCell
+        switch indexPath.section {
+        case 0:
+            let cell:BusLeavingTimesCell = tableView.dequeueReusableCell(withIdentifier: "busLeavingTimesCell") as! BusLeavingTimesCell
+            cell.busStation.text = busStopTimes[indexPath.row].nearestBusStation?.name ?? "Unknown"
+            cell.time.text = formatDate(busStopTimes[indexPath.row].time)
+            return cell
+        default:
+            let cell:BusStationCell = tableView.dequeueReusableCell(withIdentifier: "allLocationsCell") as! BusStationCell
             cell.busStation.text = allLocations[indexPath.row].nearestBusStation?.name ?? "Unknown"
             cell.time.text = formatDate(allLocations[indexPath.row].time)
             cell.speed.text = String(allLocations[indexPath.row].currentSpeed)
             cell.distance.text = String(describing: allLocations[indexPath.row].nearestBusStation?.distance)
             return cell
         }
-        let cell:BusLeavingTimesCell = tableView.dequeueReusableCell(withIdentifier: "busLeavingTimesCell") as! BusLeavingTimesCell
-        cell.busStation.text = busStopTimes[indexPath.row].nearestBusStation?.name ?? "Unknown"
-        cell.time.text = formatDate(busStopTimes[indexPath.row].time)
-        return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -85,19 +85,26 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         refreshControl.endRefreshing()
     }
     
-    private func formatDate(_ date: NSDate) -> String {
+    private func formatDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT:0)
 
-        return dateFormatter.string(from: date as Date)
+        return dateFormatter.string(from: date)
     }
     
-    private func loadObjectArray(forKey key: String) -> [Location] {
-        let data = defaults.object(forKey: key) as? Data
-        if data == nil {
+    
+    private func loadObjectArray(forKey key:String) -> [Location] {
+        if let objects = UserDefaults.standard.value(forKey: key) as? Data {
+            let decoder = JSONDecoder()
+            if let objectsDecoded = try? decoder.decode(Array.self, from: objects) as [Location] {
+                return objectsDecoded
+            } else {
+                return []
+            }
+        } else {
             return []
         }
-        return NSKeyedUnarchiver.unarchiveObject(with: data!) as! [Location]
     }
 }
 
