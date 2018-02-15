@@ -117,6 +117,7 @@ class Locations {
     private func saveToDefaults(_ objects: [Location]) {
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(objects){
+            print("appending locations")
             UserDefaults.standard.set(encoded, forKey: "allLocations")
         }
     }
@@ -125,6 +126,7 @@ class Locations {
         guard (locations.last != nil) else { return -1 }
         let lastTime = locations.last!.time as CFDate
         let currentTime = loc.time as CFDate
-        return CFDateGetTimeIntervalSinceDate(lastTime, currentTime)
+        let seconds = CFDateGetTimeIntervalSinceDate(currentTime, lastTime)
+        return seconds
     }
 }

@@ -65,6 +65,7 @@ struct BusStations:Codable {
             let decoder = JSONDecoder()
             do {
                 let stations = try decoder.decode(BusStations.self, from: responseData)
+                print("decoded JSON data")
                 completionHandler(stations, nil)
             } catch {
                 print("error trying to convert data to JSON")

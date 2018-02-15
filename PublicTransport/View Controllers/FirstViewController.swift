@@ -21,10 +21,11 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         busStopTimesTableView.delegate = self
         busStopTimesTableView.dataSource = self
+        busStopTimesTableView.delaysContentTouches = false
         busStopTimesTableView.addSubview(refreshControl)
         
-        busStopTimes = loadObjectArray(forKey: "busStopTimes")
-        allLocations = loadObjectArray(forKey: "allLocations")
+        self.busStopTimes = loadObjectArray(forKey: "busStopTimes")
+        self.allLocations = loadObjectArray(forKey: "allLocations")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,10 +78,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return refreshControl
     }()
     
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        //items.append("item " + String(items.count + 1))
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {        
+        self.busStopTimes = loadObjectArray(forKey: "busStopTimes")
+        self.allLocations = loadObjectArray(forKey: "allLocations")
         
-        //busStopTimes.append()
         self.busStopTimesTableView.reloadData()
         refreshControl.endRefreshing()
     }
