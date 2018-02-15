@@ -16,6 +16,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let sections = ["Bus leaving times", "All Locations"]
     var busStopTimes:[Location] = [] //defaults.array(forKey: "busStopTimes") as? [Location] ?? []
     var allLocations:[Location] = [] //defaults.array(forKey: "allLocations") as? [Location] ?? []
+    let helper = LocationsHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         busStopTimesTableView.delaysContentTouches = false
         busStopTimesTableView.addSubview(refreshControl)
         
-        self.busStopTimes = loadObjectArray(forKey: "busStopTimes")
-        self.allLocations = loadObjectArray(forKey: "allLocations")
+        self.busStopTimes = helper.loadObjectArray(forKey: "busStopTimes")
+        self.allLocations = helper.loadObjectArray(forKey: "allLocations")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,9 +79,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return refreshControl
     }()
     
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {        
-        self.busStopTimes = loadObjectArray(forKey: "busStopTimes")
-        self.allLocations = loadObjectArray(forKey: "allLocations")
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        self.busStopTimes = helper.loadObjectArray(forKey: "busStopTimes")
+        self.allLocations = helper.loadObjectArray(forKey: "allLocations")
         
         self.busStopTimesTableView.reloadData()
         refreshControl.endRefreshing()
@@ -94,19 +95,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return dateFormatter.string(from: date)
     }
     
-    
-    private func loadObjectArray(forKey key:String) -> [Location] {
-        if let objects = UserDefaults.standard.value(forKey: key) as? Data {
-            let decoder = JSONDecoder()
-            if let objectsDecoded = try? decoder.decode(Array.self, from: objects) as [Location] {
-                return objectsDecoded
-            } else {
-                return []
-            }
-        } else {
-            return []
-        }
-    }
 }
 
 class BusLeavingTimesCell: UITableViewCell {

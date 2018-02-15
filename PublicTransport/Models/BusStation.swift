@@ -39,6 +39,7 @@ struct BusStations:Codable {
         return "https://transportapi.com/v3/uk/bus/stops/near.json?lat=" + String(lat) + "&lon=" + String(long) +  "&app_id=c12137e2&app_key=703b3fc0bc730dacf75e46ce7b9e9402"
     }
     
+    // TODO: add global variable that states if the completion handler already doing a task, so 3 locations don't appear.
     static func allBusStations (lat: Float, long: Float, completionHandler: @escaping (BusStations?, Error?) -> Void) {
         let endpoint = BusStations.endpointForBusStations(lat: lat, long: long)
         guard let url = URL(string: endpoint) else {

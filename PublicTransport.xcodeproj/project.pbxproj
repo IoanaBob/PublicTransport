@@ -17,6 +17,7 @@
 		7C119BA82028BDFE0016BCDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C119BA62028BDFE0016BCDB /* LaunchScreen.storyboard */; };
 		7C119BB32028BDFE0016BCDB /* PublicTransportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119BB22028BDFE0016BCDB /* PublicTransportTests.swift */; };
 		7C119BBE2028BDFF0016BCDB /* PublicTransportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119BBD2028BDFF0016BCDB /* PublicTransportUITests.swift */; };
+		7C54F85A2035D4000037E877 /* locationsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54F8592035D4000037E877 /* locationsHelper.swift */; };
 		7CDD046B202A1848002451EF /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDD046A202A1848002451EF /* Location.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		7C119BB92028BDFF0016BCDB /* PublicTransportUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PublicTransportUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C119BBD2028BDFF0016BCDB /* PublicTransportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTransportUITests.swift; sourceTree = "<group>"; };
 		7C119BBF2028BDFF0016BCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C54F8592035D4000037E877 /* locationsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locationsHelper.swift; sourceTree = "<group>"; };
 		7CDD046A202A1848002451EF /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				4FBFD92C20310D7B000BFAF9 /* extensions.swift */,
+				7C54F8592035D4000037E877 /* locationsHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				7CDD046B202A1848002451EF /* Location.swift in Sources */,
 				7C119B9E2028BDFE0016BCDB /* FirstViewController.swift in Sources */,
 				4FBFD92D20310D7B000BFAF9 /* extensions.swift in Sources */,
+				7C54F85A2035D4000037E877 /* locationsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
