@@ -90,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // TODO: Use maxspeed from all locations after the last stop
         //let updatedLocations = addBusDelays(locs)
         var busStopTimes = helper.loadObjectArray(forKey: "busStopTimes")
-        let locs = self.significantLocations.locations
+        let locs = self.significantLocations.hasLeftBusAt()
         for location in locs {
             // add to persistent memory
             switch location.note {

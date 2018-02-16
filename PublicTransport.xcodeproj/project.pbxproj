@@ -12,6 +12,7 @@
 		4F8904A720372B3900C904BE /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDD046A202A1848002451EF /* Location.swift */; };
 		4F8904A820372D6800C904BE /* BusStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F767078202B66020074D848 /* BusStation.swift */; };
 		4F8904A920372D8D00C904BE /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBFD92C20310D7B000BFAF9 /* extensions.swift */; };
+		4F8904AB203740B800C904BE /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8904AA203740B800C904BE /* Variables.swift */; };
 		4FBFD92D20310D7B000BFAF9 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBFD92C20310D7B000BFAF9 /* extensions.swift */; };
 		7C119B9C2028BDFE0016BCDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9B2028BDFE0016BCDB /* AppDelegate.swift */; };
 		7C119B9E2028BDFE0016BCDB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9D2028BDFE0016BCDB /* FirstViewController.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		4F767078202B66020074D848 /* BusStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStation.swift; sourceTree = "<group>"; };
 		4F8904A520372B3300C904BE /* LocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
+		4F8904AA203740B800C904BE /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
 		4FBFD92C20310D7B000BFAF9 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		7C119B982028BDFE0016BCDB /* PublicTransport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PublicTransport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C119B9B2028BDFE0016BCDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			children = (
 				4FBFD92C20310D7B000BFAF9 /* extensions.swift */,
 				7C54F8592035D4000037E877 /* locationsHelper.swift */,
+				4F8904AA203740B800C904BE /* Variables.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				7C119BA02028BDFE0016BCDB /* SecondViewController.swift in Sources */,
 				7C119B9C2028BDFE0016BCDB /* AppDelegate.swift in Sources */,
 				4F767079202B66020074D848 /* BusStation.swift in Sources */,
+				4F8904AB203740B800C904BE /* Variables.swift in Sources */,
 				7CDD046B202A1848002451EF /* Location.swift in Sources */,
 				7C119B9E2028BDFE0016BCDB /* FirstViewController.swift in Sources */,
 				4FBFD92D20310D7B000BFAF9 /* extensions.swift in Sources */,

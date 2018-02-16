@@ -72,7 +72,7 @@ class Locations {
     }
     
     func addLocationIfSignificant(loc: Location) {
-        if locations.isEmpty || (timeFromLastLocation(loc) > 60 && loc.currentSpeed <= walkingSpeedTreshold) || (timeFromLastLocation(loc) > 30 && loc.currentSpeed > walkingSpeedTreshold) {
+        if conditionsApply(loc) {
             let lat = Float(loc.lat)
             let long =  Float(loc.long)
             // calls function using completion handler in order to add new location
@@ -86,7 +86,6 @@ class Locations {
                     print("error getting all: result is nil")
                     return
                 }
-                //print(busStations.stops)
                 if !busStations.stops.isEmpty || self.locations.isEmpty {
                     var mutatedLoc = loc
                     mutatedLoc.nearestBusStation = !self.locations.isEmpty ? busStations.stops.first! : nil
@@ -133,6 +132,21 @@ class Locations {
             print("appending locations")
             UserDefaults.standard.set(encoded, forKey: "allLocations")
         }
+    }
+    
+    private func conditionsApply(_ loc: Location) -> Bool {
+        guard !locations.isEmpty else { return true }
+        if (loc.nearestBusStation?.distance ?? -1) > 200 {
+            if (timeFromLastLocation(loc) > 120 && loc.currentSpeed <= walkingSpeedTreshold) || (timeFromLastLocation(loc) > 60 && loc.currentSpeed > walkingSpeedTreshold) {
+                return true
+            }
+        }
+        else {
+            if (timeFromLastLocation(loc) > 60 && loc.currentSpeed <= walkingSpeedTreshold) || (timeFromLastLocation(loc) > 30 && loc.currentSpeed > walkingSpeedTreshold) {
+                return true
+            }
+        }
+        return false
     }
     
     private func timeFromLastLocation(_ loc: Location) -> Double {
