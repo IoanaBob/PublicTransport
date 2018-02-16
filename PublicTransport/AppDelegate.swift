@@ -121,7 +121,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
     
-    func clearMemory() {
-        
-    }
+
+    
 }

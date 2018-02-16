@@ -20,7 +20,7 @@ struct Location: Codable, Equatable {
     let time: Date
     let currentSpeed: Double
     // information from Transport API
-    var nearestBusStation: BusStation? = nil
+    var nearestBusStation: BusStation?
     var note:busNotes = .none
     
     static func ==(lhs: Location, rhs: Location) -> Bool {
@@ -100,18 +100,31 @@ class Locations {
     
     func hasLeftBusAt() -> [Location] {
         var inStationAtLocations:[Location] = []
+        var lastStationIndex:Int = 0
         for var loc in locations {
             guard var nextLoc = locations.item(after: loc) else {return inStationAtLocations}
+            let inVehicle = isInVehicle(index: locations.index(of: loc)!, since: lastStationIndex)
+            // after leaving the station, busses usually sprint therefore checking if the next location has driving speed
             if loc.isWaitingInStation() && nextLoc.isInVehicle() {
                 loc.note = .leftStation
+                lastStationIndex = locations.index(of: loc)!
                 inStationAtLocations.append(loc)
             }
-            if loc.isInVehicle() && nextLoc.isWaitingInStation() {
+            // when arriving in station checks against all previous locations
+            if inVehicle && nextLoc.isWaitingInStation() {
                 nextLoc.note = .arrivedStation
+                lastStationIndex = locations.index(of: loc)!
                 inStationAtLocations.append(nextLoc)
             }
         }
         return inStationAtLocations
+    }
+    
+    // checks if any of the locations after the previous bus stop had driving speed
+    func isInVehicle (index: Int, since firstIndex: Int) -> Bool {
+        let subArray = locations[(firstIndex + 1)...index]
+        let maxSpeed = (subArray.max {$0.currentSpeed < $1.currentSpeed})!.currentSpeed
+        return maxSpeed > walkingSpeedTreshold
     }
     
     private func saveToDefaults(_ objects: [Location]) {
