@@ -73,6 +73,7 @@ class Locations {
     
     func addLocationIfSignificant(loc: Location) {
         if conditionsApply(loc) {
+            Variables.requestingNearestBusStations = true
             let lat = Float(loc.lat)
             let long =  Float(loc.long)
             // calls function using completion handler in order to add new location
@@ -86,6 +87,7 @@ class Locations {
                     print("error getting all: result is nil")
                     return
                 }
+                print("helloooo")
                 if !busStations.stops.isEmpty || self.locations.isEmpty {
                     var mutatedLoc = loc
                     mutatedLoc.nearestBusStation = !self.locations.isEmpty ? busStations.stops.first! : nil
@@ -135,7 +137,13 @@ class Locations {
     }
     
     private func conditionsApply(_ loc: Location) -> Bool {
+        // thread lock
+        guard Variables.requestingNearestBusStations == false else {return false}
+        // we always want to add the first location for future reference
         guard !locations.isEmpty else { return true }
+        // the new location has the same coordinates as the one last recorded
+        if locations.last! == loc { return false }
+        // conditions based on walking/driving distance
         if (loc.nearestBusStation?.distance ?? -1) > 200 {
             if (timeFromLastLocation(loc) > 120 && loc.currentSpeed <= walkingSpeedTreshold) || (timeFromLastLocation(loc) > 60 && loc.currentSpeed > walkingSpeedTreshold) {
                 return true

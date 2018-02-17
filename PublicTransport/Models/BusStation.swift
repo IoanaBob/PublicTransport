@@ -75,5 +75,6 @@ struct BusStations:Codable {
             }
         }
         task.resume()
+        Variables.requestingNearestBusStations = false
     }
 }
