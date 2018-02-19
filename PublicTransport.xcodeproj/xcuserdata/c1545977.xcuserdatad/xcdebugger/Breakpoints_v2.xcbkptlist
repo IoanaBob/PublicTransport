@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PublicTransport/Models/BusStation.swift"
-            timestampString = "540751468.124174"
+            timestampString = "540753430.856159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -26,12 +26,12 @@
                   moduleName = "PublicTransport"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/BusStation.swift"
-                  timestampString = "540750604.016665"
+                  timestampString = "540753369.927282"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "54"
                   endingLineNumber = "54"
-                  offsetFromSymbolStart = "325">
+                  offsetFromSymbolStart = "321">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -41,7 +41,7 @@
                   moduleName = "PublicTransport"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/BusStation.swift"
-                  timestampString = "540750604.0185961"
+                  timestampString = "540753369.9297889"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "56"
@@ -56,12 +56,12 @@
                   moduleName = "PublicTransportTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/BusStation.swift"
-                  timestampString = "540750604.9252501"
+                  timestampString = "540753370.974358"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "54"
                   endingLineNumber = "54"
-                  offsetFromSymbolStart = "325">
+                  offsetFromSymbolStart = "321">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -71,7 +71,7 @@
                   moduleName = "PublicTransportTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/BusStation.swift"
-                  timestampString = "540750604.929649"
+                  timestampString = "540753370.978622"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "56"
@@ -88,7 +88,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PublicTransport/Models/BusStation.swift"
-            timestampString = "540751468.124236"
+            timestampString = "540753430.8562239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
@@ -104,12 +104,12 @@
                   moduleName = "PublicTransport"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/BusStation.swift"
-                  timestampString = "540750604.026203"
+                  timestampString = "540753369.934884"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "68"
                   endingLineNumber = "68"
-                  offsetFromSymbolStart = "412">
+                  offsetFromSymbolStart = "394">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -119,12 +119,12 @@
                   moduleName = "PublicTransportTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/BusStation.swift"
-                  timestampString = "540750604.936121"
+                  timestampString = "540753370.984782"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "68"
                   endingLineNumber = "68"
-                  offsetFromSymbolStart = "412">
+                  offsetFromSymbolStart = "394">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -152,12 +152,12 @@
                   moduleName = "PublicTransport"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/Location.swift"
-                  timestampString = "540750604.0307879"
+                  timestampString = "540753369.938427"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "108"
-                  endingLineNumber = "108"
-                  offsetFromSymbolStart = "2349">
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "3297">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -167,12 +167,12 @@
                   moduleName = "PublicTransportTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/Location.swift"
-                  timestampString = "540750604.941921"
+                  timestampString = "540753370.990433"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "108"
-                  endingLineNumber = "108"
-                  offsetFromSymbolStart = "2349">
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "3297">
                </Location>
             </Locations>
          </BreakpointContent>

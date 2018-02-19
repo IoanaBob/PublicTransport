@@ -50,7 +50,7 @@ struct LocationScenarios {
         locs.locations.append(Location.init(lat: 0.7, long: 0.63, nearestBusStation: InitBusStation(distance: 50, number: 3), note: .none, currentSpeed: 2))
     }
     
-    private func InitBusStation(distance: Int, number: Int) -> BusStation {
+    func InitBusStation(distance: Int, number: Int) -> BusStation {
         let numberStr = String(number)
         let atcocode = "mycode" + numberStr
         let mode = "bus"

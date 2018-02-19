@@ -32,7 +32,7 @@ struct BusStation: Codable {
 }
 
 struct BusStations:Codable {
-    let request_time: String
+    //let request_time: String
     let stops: [BusStation]
     
     static func endpointForBusStations(lat: Float, long: Float) -> String {
