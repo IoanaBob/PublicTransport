@@ -53,7 +53,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.busStation.text = allLocations[indexPath.row].nearestBusStation?.name ?? "Unknown"
             cell.time.text = formatDate(allLocations[indexPath.row].time)
             cell.speed.text = String(allLocations[indexPath.row].currentSpeed)
-            cell.distance.text = String(describing: allLocations[indexPath.row].nearestBusStation?.distance)
+            cell.distance.text = String(describing: allLocations[indexPath.row].nearestBusStation?.distance ?? -1) 
             return cell
         }
     }

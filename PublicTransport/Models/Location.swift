@@ -87,14 +87,14 @@ class Locations {
                     print("error getting all: result is nil")
                     return
                 }
-                print("helloooo")
                 if !busStations.stops.isEmpty || self.locations.isEmpty {
                     var mutatedLoc = loc
-                    mutatedLoc.nearestBusStation = !self.locations.isEmpty ? busStations.stops.first! : nil
+                    mutatedLoc.nearestBusStation = busStations.stops.first ?? nil
                     self.locations.append(mutatedLoc)
                     print(self.locations)
                     self.saveToDefaults(self.locations)
                 }
+                Variables.requestingNearestBusStations = false
             }
         }
     }
@@ -103,6 +103,7 @@ class Locations {
         var inStationAtLocations:[Location] = []
         var lastStationIndex:Int = 0
         for var loc in locations {
+            print("index = " + String(locations.index(of: loc)!) )
             guard var nextLoc = locations.item(after: loc) else {return inStationAtLocations}
             let inVehicle = isInVehicle(index: locations.index(of: loc)!, since: lastStationIndex)
             // after leaving the station, busses usually sprint therefore checking if the next location has driving speed
@@ -123,7 +124,10 @@ class Locations {
     
     // checks if any of the locations after the previous bus stop had driving speed
     func isInVehicle (index: Int, since firstIndex: Int) -> Bool {
-        let subArray = locations[(firstIndex + 1)...index]
+        if firstIndex == index {
+            return false
+        }
+        let subArray = Array(locations[(firstIndex + 1)...index])
         let maxSpeed = (subArray.max {$0.currentSpeed < $1.currentSpeed})!.currentSpeed
         return maxSpeed > walkingSpeedTreshold
     }
@@ -136,7 +140,7 @@ class Locations {
         }
     }
     
-    private func conditionsApply(_ loc: Location) -> Bool {
+    func conditionsApply(_ loc: Location) -> Bool {
         // thread lock
         guard Variables.requestingNearestBusStations == false else {return false}
         // we always want to add the first location for future reference

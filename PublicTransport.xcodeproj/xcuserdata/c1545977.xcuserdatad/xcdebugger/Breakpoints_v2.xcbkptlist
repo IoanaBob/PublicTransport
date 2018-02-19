@@ -9,72 +9,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PublicTransport/Models/Location.swift"
-            timestampString = "540398974.396952"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "addLocationIfSignificant(loc:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PublicTransport.Locations.addLocationIfSignificant(loc: PublicTransport.Location) -&gt; ()"
-                  moduleName = "PublicTransport"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/Location.swift"
-                  timestampString = "540395362.543978"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
-                  offsetFromSymbolStart = "5736">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;PublicTransport.BusStations&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PublicTransport.Locations.addLocationIfSignificant(loc: PublicTransport.Location) -&gt; ()"
-                  moduleName = "PublicTransport"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/Location.swift"
-                  timestampString = "540395362.545994"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "80"
-                  endingLineNumber = "80"
-                  offsetFromSymbolStart = "408">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PublicTransport/Models/Location.swift"
-            timestampString = "540398974.3970309"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "addLocationIfSignificant(loc:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "PublicTransport/Models/BusStation.swift"
-            timestampString = "540398974.397099"
+            timestampString = "540751468.124174"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -90,12 +26,12 @@
                   moduleName = "PublicTransport"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/BusStation.swift"
-                  timestampString = "540395362.554371"
+                  timestampString = "540750604.016665"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "240">
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "325">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -105,12 +41,42 @@
                   moduleName = "PublicTransport"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/BusStation.swift"
-                  timestampString = "540395362.55681"
+                  timestampString = "540750604.0185961"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "52">
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "54">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static PublicTransportTests.BusStations.allBusStations(lat: Swift.Float, long: Swift.Float, completionHandler: (Swift.Optional&lt;PublicTransportTests.BusStations&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PublicTransportTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/BusStation.swift"
+                  timestampString = "540750604.9252501"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "325">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__ObjC.URLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static PublicTransportTests.BusStations.allBusStations(lat: Swift.Float, long: Swift.Float, completionHandler: (Swift.Optional&lt;PublicTransportTests.BusStations&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PublicTransportTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/BusStation.swift"
+                  timestampString = "540750604.929649"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "54">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -122,13 +88,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PublicTransport/Models/BusStation.swift"
-            timestampString = "540398974.397155"
+            timestampString = "540751468.124236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
             endingLineNumber = "68"
             landmarkName = "allBusStations(lat:long:completionHandler:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__ObjC.URLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static PublicTransport.BusStations.allBusStations(lat: Swift.Float, long: Swift.Float, completionHandler: (Swift.Optional&lt;PublicTransport.BusStations&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PublicTransport"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/BusStation.swift"
+                  timestampString = "540750604.026203"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "412">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__ObjC.URLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static PublicTransportTests.BusStations.allBusStations(lat: Swift.Float, long: Swift.Float, completionHandler: (Swift.Optional&lt;PublicTransportTests.BusStations&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PublicTransportTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/BusStation.swift"
+                  timestampString = "540750604.936121"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "412">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -138,13 +136,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PublicTransport/Models/Location.swift"
-            timestampString = "540398974.3972059"
+            timestampString = "540751468.124284"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "addLocationIfSignificant(loc:)"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "hasLeftBusAt()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PublicTransport.Locations.hasLeftBusAt() -&gt; Swift.Array&lt;PublicTransport.Location&gt;"
+                  moduleName = "PublicTransport"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/Location.swift"
+                  timestampString = "540750604.0307879"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "2349">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PublicTransportTests.Locations.hasLeftBusAt() -&gt; Swift.Array&lt;PublicTransportTests.Location&gt;"
+                  moduleName = "PublicTransportTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///home/c1545977/Desktop/PublicTransport/PublicTransport/Models/Location.swift"
+                  timestampString = "540750604.941921"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "2349">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

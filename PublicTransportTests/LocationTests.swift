@@ -10,13 +10,12 @@ import XCTest
 
 class LocationTests: XCTestCase {
     let locs = Locations()
+    let scenarios = LocationScenarios()
     
     override func setUp() {
         super.setUp()
-        locs.locations.append(Location.init(lat: 0, long: 0, currentSpeed: 1))
-        locs.locations.append(Location.init(lat: 0.05, long: 0, currentSpeed: 1))
-        locs.locations.append(Location.init(lat: 0.1, long: 0, currentSpeed: 1.15))
-        locs.locations.append(Location.init(lat: 0.2, long: 0, currentSpeed: 4.20))
+        scenarios.addWalking(locs: locs)
+        scenarios.addEnteringBus(locs: locs)
     }
     
     override func tearDown() {
@@ -25,8 +24,10 @@ class LocationTests: XCTestCase {
     }
     
     func testWasInVehicle() {
-        let result = locs.isInVehicle(index: 3, since: 0)
+        var result = locs.isInVehicle(index: 6, since: 0)
         XCTAssertTrue(result)
+        result = locs.isInVehicle(index: 6, since: 6)
+        XCTAssertFalse(result)
     }
     
     func testWasNotInVehicle() {
@@ -35,8 +36,56 @@ class LocationTests: XCTestCase {
     }
     
     func testDrivingSpeed() {
-        XCTAssertTrue(locs.locations[3].isInVehicle())
-        XCTAssertFalse(locs.locations[2].isInVehicle())
+        XCTAssertTrue(locs.locations[6].isInVehicle())
+        XCTAssertFalse(locs.locations[5].isInVehicle())
+    }
+    
+    func testLeftBus() {
+        let result = locs.hasLeftBusAt()
+        XCTAssertTrue(result[0].note == .leftStation)
+        XCTAssertEqual(result, [locs.locations[5]])
+    }
+    
+    func testArrivedBusStation2() {
+        scenarios.addArrivingStation2(locs: locs)
+        let result = locs.hasLeftBusAt()
+        XCTAssertTrue(result[1].note == .arrivedStation)
+        XCTAssertEqual(result[1], locs.locations[8])
+    }
+    
+    func testLeftBusStation2() {
+        scenarios.addArrivingStation2(locs: locs)
+        scenarios.addLeavingStation2(locs: locs)
+        let result = locs.hasLeftBusAt()
+        XCTAssertTrue(result[2].note == .leftStation)
+        XCTAssertEqual(result[2], locs.locations[9])
+    }
+    
+    func testLeftBusStation2Badly() {
+        scenarios.addArrivingStation2(locs: locs)
+        scenarios.addLeavingStation2Badly(locs: locs)
+        let result = locs.hasLeftBusAt()
+        XCTAssertFalse(result.last?.note == .leftStation)
+        XCTAssertNotEqual(result.last, locs.locations[9])
+    }
+    
+    func testArrivedBusStation3() {
+        scenarios.addArrivingStation3(locs: locs)
+        let result = locs.hasLeftBusAt()
+        XCTAssertTrue(result[1].note == .arrivedStation)
+        XCTAssertEqual(result[1], locs.locations[9])
+    }
+    
+    func testLeavingBusStation3() {
+        scenarios.addArrivingStation3(locs: locs)
+        scenarios.addLeavingStation3(locs: locs)
+        let result = locs.hasLeftBusAt()
+        XCTAssertFalse(result.last?.note == .leftStation)
+    }
+    
+    func testConditionsApply() {
+        let result = locs.conditionsApply(locs.locations[2])
+        XCTAssertFalse(result, "Conditions should not apply in this case.")
     }
     
     func testPerformanceExample() {

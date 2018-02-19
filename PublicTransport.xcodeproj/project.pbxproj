@@ -24,6 +24,8 @@
 		7C119BBE2028BDFF0016BCDB /* PublicTransportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119BBD2028BDFF0016BCDB /* PublicTransportUITests.swift */; };
 		7C54F85A2035D4000037E877 /* locationsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54F8592035D4000037E877 /* locationsHelper.swift */; };
 		7CDD046B202A1848002451EF /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDD046A202A1848002451EF /* Location.swift */; };
+		7CFC27E7203AE63800FED659 /* LocationScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFC27E6203AE63800FED659 /* LocationScenarios.swift */; };
+		7CFC27E8203AE81400FED659 /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8904AA203740B800C904BE /* Variables.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,7 @@
 		7C119BBF2028BDFF0016BCDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C54F8592035D4000037E877 /* locationsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locationsHelper.swift; sourceTree = "<group>"; };
 		7CDD046A202A1848002451EF /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		7CFC27E6203AE63800FED659 /* LocationScenarios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationScenarios.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,7 @@
 				7C119BB22028BDFE0016BCDB /* PublicTransportTests.swift */,
 				7C119BB42028BDFF0016BCDB /* Info.plist */,
 				4F8904A520372B3300C904BE /* LocationTests.swift */,
+				7CFC27E6203AE63800FED659 /* LocationScenarios.swift */,
 			);
 			path = PublicTransportTests;
 			sourceTree = "<group>";
@@ -328,9 +332,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F8904A920372D8D00C904BE /* extensions.swift in Sources */,
+				7CFC27E8203AE81400FED659 /* Variables.swift in Sources */,
 				4F8904A620372B3300C904BE /* LocationTests.swift in Sources */,
 				4F8904A720372B3900C904BE /* Location.swift in Sources */,
 				7C119BB32028BDFE0016BCDB /* PublicTransportTests.swift in Sources */,
+				7CFC27E7203AE63800FED659 /* LocationScenarios.swift in Sources */,
 				4F8904A820372D6800C904BE /* BusStation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
