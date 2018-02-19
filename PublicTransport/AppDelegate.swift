@@ -15,14 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     var locationManager = CLLocationManager()
     var significantLocations = Locations()
-    let defaults = UserDefaults.standard
-    let helper = LocationsHelper()
     
     private var startTime: Date?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
         return true
     }
 
@@ -73,54 +70,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let currentLocation = Location.init(lat: lastloc.coordinate.latitude, long: lastloc.coordinate.longitude, currentSpeed: (manager.location?.speed)!)
         significantLocations.addLocationIfSignificant(loc: currentLocation)
         if significantLocations.locations.count > 100 {
-            saveToDefaults()
+            significantLocations.saveToDefaults()
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error \(error)")
     }
-    
-//    func addBusDelays(_ locs: [Location]) -> [Location] {
-//        // should I cache?
-//        return locs
-//    }
-    
-    func saveToDefaults() {
-        // TODO: Use maxspeed from all locations after the last stop
-        //let updatedLocations = addBusDelays(locs)
-        var busStopTimes = helper.loadObjectArray(forKey: "busStopTimes")
-        let locs = self.significantLocations.hasLeftBusAt()
-        for location in locs {
-            // add to persistent memory
-            switch location.note {
-            case .leftStation:
-                // take current location
-                busStopTimes.append(location)
-            case .arrivedStation:
-                guard let nextLocation = locs.item(after: location) else { return }
-                if nextLocation.note == .leftStation {
-                    // do nothing
-                    break
-                }
-                else {
-                    // take current location
-                    busStopTimes.append(location)
-                }
-            case .none: break // do nothing
-            }
-        }
-        // encoding complex objects so it can be saved in phone storage
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(busStopTimes){
-            UserDefaults.standard.set(encoded, forKey: "busStopTimes")
-        }
-        // emptying locations because we don't need them anymore
-        if !locs.isEmpty {
-            self.significantLocations.locations = [locs.last!]
-        }
-    }
-    
-
-    
 }

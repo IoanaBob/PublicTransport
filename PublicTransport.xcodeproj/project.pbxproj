@@ -24,6 +24,7 @@
 		7C119BBE2028BDFF0016BCDB /* PublicTransportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119BBD2028BDFF0016BCDB /* PublicTransportUITests.swift */; };
 		7C54F85A2035D4000037E877 /* locationsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54F8592035D4000037E877 /* locationsHelper.swift */; };
 		7C7DA65B203B3B1700591BA0 /* BusStationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7DA65A203B3B1700591BA0 /* BusStationTests.swift */; };
+		7C7DA65E203B41CE00591BA0 /* locationsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54F8592035D4000037E877 /* locationsHelper.swift */; };
 		7CDD046B202A1848002451EF /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDD046A202A1848002451EF /* Location.swift */; };
 		7CFC27E7203AE63800FED659 /* LocationScenarios.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFC27E6203AE63800FED659 /* LocationScenarios.swift */; };
 		7CFC27E8203AE81400FED659 /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8904AA203740B800C904BE /* Variables.swift */; };
@@ -335,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F8904A920372D8D00C904BE /* extensions.swift in Sources */,
+				7C7DA65E203B41CE00591BA0 /* locationsHelper.swift in Sources */,
 				7CFC27E8203AE81400FED659 /* Variables.swift in Sources */,
 				4F8904A620372B3300C904BE /* LocationTests.swift in Sources */,
 				4F8904A720372B3900C904BE /* Location.swift in Sources */,

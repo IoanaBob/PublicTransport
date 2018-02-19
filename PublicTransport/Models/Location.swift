@@ -12,8 +12,6 @@ import CoreLocation
 let walkingSpeedTreshold:Double = 14000/3600
 let defaults = UserDefaults.standard
 
-
-
 struct Location: Codable, Equatable {
     let lat: Double
     let long: Double
@@ -130,6 +128,42 @@ class Locations {
         let subArray = Array(locations[(firstIndex + 1)...index])
         let maxSpeed = (subArray.max {$0.currentSpeed < $1.currentSpeed})!.currentSpeed
         return maxSpeed > walkingSpeedTreshold
+    }
+    
+    func saveToDefaults() {
+        let helper = LocationsHelper()
+        // TODO: Use maxspeed from all locations after the last stop
+        //let updatedLocations = addBusDelays(locs)
+        var busStopTimes = helper.loadObjectArray(forKey: "busStopTimes")
+        let locs = self.hasLeftBusAt()
+        for location in locs {
+            // add to persistent memory
+            switch location.note {
+            case .leftStation:
+                // take current location
+                busStopTimes.append(location)
+            case .arrivedStation:
+                guard let nextLocation = locs.item(after: location) else { return }
+                if nextLocation.note == .leftStation {
+                    // do nothing
+                    break
+                }
+                else {
+                    // take current location
+                    busStopTimes.append(location)
+                }
+            case .none: break // do nothing
+            }
+        }
+        // encoding complex objects so it can be saved in phone storage
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(busStopTimes){
+            UserDefaults.standard.set(encoded, forKey: "busStopTimes")
+        }
+        // emptying locations because we don't need them anymore
+        if !locs.isEmpty {
+            self.locations = [locs.last!]
+        }
     }
     
     private func saveToDefaults(_ objects: [Location]) {
