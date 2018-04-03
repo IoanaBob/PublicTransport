@@ -11,3 +11,13 @@ import Foundation
 struct Variables {
     static var requestingNearestBusStations = false
 }
+
+struct Helper {
+    func formatDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT:0)
+        
+        return dateFormatter.string(from: date)
+    }
+}

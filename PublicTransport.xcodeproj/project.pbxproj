@@ -10,9 +10,12 @@
 		4F767079202B66020074D848 /* BusStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F767078202B66020074D848 /* BusStation.swift */; };
 		4F8904A620372B3300C904BE /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8904A520372B3300C904BE /* LocationTests.swift */; };
 		4F8904A720372B3900C904BE /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDD046A202A1848002451EF /* Location.swift */; };
-		4F8904A820372D6800C904BE /* BusStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F767078202B66020074D848 /* BusStation.swift */; };
 		4F8904A920372D8D00C904BE /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBFD92C20310D7B000BFAF9 /* extensions.swift */; };
 		4F8904AB203740B800C904BE /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8904AA203740B800C904BE /* Variables.swift */; };
+		4F9E4B6B206FDE9700773368 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E4B6A206FDE9700773368 /* HttpClient.swift */; };
+		4F9E4B6D2072C96A00773368 /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E4B6C2072C96A00773368 /* Timetable.swift */; };
+		4F9E4B6F2073B5A900773368 /* SearchTimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E4B6E2073B5A900773368 /* SearchTimetableViewController.swift */; };
+		4F9E4B712073D98400773368 /* SearchBusStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E4B702073D98400773368 /* SearchBusStopViewController.swift */; };
 		4FBFD92D20310D7B000BFAF9 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBFD92C20310D7B000BFAF9 /* extensions.swift */; };
 		7C119B9C2028BDFE0016BCDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9B2028BDFE0016BCDB /* AppDelegate.swift */; };
 		7C119B9E2028BDFE0016BCDB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9D2028BDFE0016BCDB /* FirstViewController.swift */; };
@@ -51,6 +54,10 @@
 		4F767078202B66020074D848 /* BusStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStation.swift; sourceTree = "<group>"; };
 		4F8904A520372B3300C904BE /* LocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
 		4F8904AA203740B800C904BE /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
+		4F9E4B6A206FDE9700773368 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		4F9E4B6C2072C96A00773368 /* Timetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
+		4F9E4B6E2073B5A900773368 /* SearchTimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTimetableViewController.swift; sourceTree = "<group>"; };
+		4F9E4B702073D98400773368 /* SearchBusStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBusStopViewController.swift; sourceTree = "<group>"; };
 		4FBFD92C20310D7B000BFAF9 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		7C119B982028BDFE0016BCDB /* PublicTransport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PublicTransport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C119B9B2028BDFE0016BCDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +110,7 @@
 				4FBFD92C20310D7B000BFAF9 /* extensions.swift */,
 				7C54F8592035D4000037E877 /* locationsHelper.swift */,
 				4F8904AA203740B800C904BE /* Variables.swift */,
+				4F9E4B6A206FDE9700773368 /* HttpClient.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -168,6 +176,8 @@
 			children = (
 				7C119B9D2028BDFE0016BCDB /* FirstViewController.swift */,
 				7C119B9F2028BDFE0016BCDB /* SecondViewController.swift */,
+				4F9E4B6E2073B5A900773368 /* SearchTimetableViewController.swift */,
+				4F9E4B702073D98400773368 /* SearchBusStopViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -177,6 +187,7 @@
 			children = (
 				7CDD046A202A1848002451EF /* Location.swift */,
 				4F767078202B66020074D848 /* BusStation.swift */,
+				4F9E4B6C2072C96A00773368 /* Timetable.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -321,9 +332,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C119BA02028BDFE0016BCDB /* SecondViewController.swift in Sources */,
+				4F9E4B6D2072C96A00773368 /* Timetable.swift in Sources */,
 				7C119B9C2028BDFE0016BCDB /* AppDelegate.swift in Sources */,
 				4F767079202B66020074D848 /* BusStation.swift in Sources */,
+				4F9E4B6F2073B5A900773368 /* SearchTimetableViewController.swift in Sources */,
 				4F8904AB203740B800C904BE /* Variables.swift in Sources */,
+				4F9E4B6B206FDE9700773368 /* HttpClient.swift in Sources */,
+				4F9E4B712073D98400773368 /* SearchBusStopViewController.swift in Sources */,
 				7CDD046B202A1848002451EF /* Location.swift in Sources */,
 				7C119B9E2028BDFE0016BCDB /* FirstViewController.swift in Sources */,
 				4FBFD92D20310D7B000BFAF9 /* extensions.swift in Sources */,
@@ -342,7 +357,6 @@
 				4F8904A720372B3900C904BE /* Location.swift in Sources */,
 				7C119BB32028BDFE0016BCDB /* PublicTransportTests.swift in Sources */,
 				7CFC27E7203AE63800FED659 /* LocationScenarios.swift in Sources */,
-				4F8904A820372D6800C904BE /* BusStation.swift in Sources */,
 				7C7DA65B203B3B1700591BA0 /* BusStationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

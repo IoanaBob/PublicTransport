@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let currentLocation = Location.init(lat: lastloc.coordinate.latitude, long: lastloc.coordinate.longitude, currentSpeed: (manager.location?.speed)!)
         significantLocations.addLocationIfSignificant(loc: currentLocation)
         if significantLocations.locations.count > 100 {
-            significantLocations.saveToDefaults()
+            significantLocations.addToDB()
         }
     }
     

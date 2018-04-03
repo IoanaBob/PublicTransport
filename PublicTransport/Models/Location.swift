@@ -130,11 +130,64 @@ class Locations {
         return maxSpeed > walkingSpeedTreshold
     }
     
-    func saveToDefaults() {
+    func addBusStopsToDefaults() {
         let helper = LocationsHelper()
         // TODO: Use maxspeed from all locations after the last stop
         //let updatedLocations = addBusDelays(locs)
         var busStopTimes = helper.loadObjectArray(forKey: "busStopTimes")
+        let newBusStopTimes = findBusStopTimes()
+        busStopTimes.append(contentsOf: newBusStopTimes)
+        // encoding complex objects so it can be saved in phone storage
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(busStopTimes){
+            UserDefaults.standard.set(encoded, forKey: "busStopTimes")
+        }
+        // emptying locations because we don't need them anymore
+        emptyLocations()
+    }
+    
+    func addToDB() {
+        let newLocations = findBusStopTimes()
+        for stop in newLocations {
+            var params = [String:Any]()
+            
+            params["atcocode"] = stop.nearestBusStation?.atcocode
+            params["mode"] = stop.nearestBusStation?.mode
+            params["name"] = stop.nearestBusStation?.name
+            params["smscode"] = stop.nearestBusStation?.smscode
+            params["bearing"] = stop.nearestBusStation?.bearing
+            params["locality"] = stop.nearestBusStation?.locality
+            params["indicator"] = stop.nearestBusStation?.indicator
+            params["longitude"] = stop.nearestBusStation?.longitude
+            params["latitude"] = stop.nearestBusStation?.latitude
+            params["distance"] = stop.nearestBusStation?.distance
+            
+            HttpClientApi.instance().postElement(url: "/bus_stop", params: params, success: { (data, response, error) in
+                print("POST bus stop succesful!")
+                
+                let url = "/location/" + String(describing: data?.id)
+                var locationParams = [String:Any]()
+                locationParams["note"] = stop.note.hashValue
+                locationParams["latitude"] = stop.lat
+                locationParams["longitude"] = stop.long
+                locationParams["time"] = Helper().formatDate(stop.time)
+                locationParams["current_speed"] = stop.currentSpeed
+                
+                HttpClientApi.instance().postElement(url: url, params: locationParams, success: { (data, response, error) in
+                    print("POST location succesful!")
+                }, failure: { (data, response, error) in
+                    // API call Failure
+                })
+            }, failure: { (data, response, error) in
+                // API call Failure
+            })
+        }
+        // emptying locations because we don't need them anymore
+        emptyLocations()
+    }
+    
+    func findBusStopTimes() -> [Location] {
+        var busStopTimes:[Location] = []
         let locs = self.hasLeftBusAt()
         for location in locs {
             // add to persistent memory
@@ -143,7 +196,7 @@ class Locations {
                 // take current location
                 busStopTimes.append(location)
             case .arrivedStation:
-                guard let nextLocation = locs.item(after: location) else { return }
+                guard let nextLocation = locs.item(after: location) else { return busStopTimes }
                 if nextLocation.note == .leftStation {
                     // do nothing
                     break
@@ -155,14 +208,12 @@ class Locations {
             case .none: break // do nothing
             }
         }
-        // encoding complex objects so it can be saved in phone storage
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(busStopTimes){
-            UserDefaults.standard.set(encoded, forKey: "busStopTimes")
-        }
-        // emptying locations because we don't need them anymore
-        if !locs.isEmpty {
-            self.locations = [locs.last!]
+        return busStopTimes
+    }
+    
+    func emptyLocations() {
+        if self.locations.isEmpty {
+            self.locations = [self.locations.last!]
         }
     }
     

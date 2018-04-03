@@ -46,12 +46,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         case 0:
             let cell:BusLeavingTimesCell = tableView.dequeueReusableCell(withIdentifier: "busLeavingTimesCell") as! BusLeavingTimesCell
             cell.busStation.text = busStopTimes[indexPath.row].nearestBusStation?.name ?? "Unknown"
-            cell.time.text = formatDate(busStopTimes[indexPath.row].time)
+            cell.time.text = Helper().formatDate(busStopTimes[indexPath.row].time)
             return cell
         default:
             let cell:BusStationCell = tableView.dequeueReusableCell(withIdentifier: "allLocationsCell") as! BusStationCell
             cell.busStation.text = allLocations[indexPath.row].nearestBusStation?.name ?? "Unknown"
-            cell.time.text = formatDate(allLocations[indexPath.row].time)
+            cell.time.text = Helper().formatDate(allLocations[indexPath.row].time)
             cell.speed.text = String(allLocations[indexPath.row].currentSpeed)
             cell.distance.text = String(describing: allLocations[indexPath.row].nearestBusStation?.distance ?? -1) 
             return cell
@@ -85,16 +85,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.busStopTimesTableView.reloadData()
         refreshControl.endRefreshing()
-    }
-    
-    private func formatDate(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        dateFormatter.timeZone = TimeZone(secondsFromGMT:0)
-
-        return dateFormatter.string(from: date)
-    }
-    
+    }    
 }
 
 class BusLeavingTimesCell: UITableViewCell {
