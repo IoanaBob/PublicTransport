@@ -6,7 +6,7 @@
 //  Copyright © 2018 Ioana Surdu-Bob. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension Collection where Iterator.Element: Equatable {
     typealias Element = Self.Iterator.Element
@@ -30,5 +30,15 @@ extension Collection where Iterator.Element: Equatable {
         return self.index(of: item)
             .map(self.index(afterWithWrapAround:))
             .map{ self[$0] }
+    }
+}
+
+
+extension UIViewController {
+    func alert(message: String, title: String = "") {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(OKAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }

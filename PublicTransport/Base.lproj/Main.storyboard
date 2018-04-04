@@ -253,13 +253,81 @@
                     <view key="view" contentMode="scaleToFill" id="6Kv-zk-UbW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bus Stop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKG-Zt-NEQ">
+                                <rect key="frame" x="16" y="132" width="69" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmP-sX-a6u">
+                                <rect key="frame" x="16" y="319" width="36" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofE-Ql-nR4">
+                                <rect key="frame" x="0.0" y="161" width="375" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="qcV-JC-wmm"/>
+                                </constraints>
+                            </pickerView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="IOg-xf-sEE">
+                                <rect key="frame" x="0.0" y="348" width="375" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="150" id="aeJ-rc-DvU"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="544546932.14398003">
+                                    <!--2018-04-04 15:02:12 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTF-ro-aTB">
+                                <rect key="frame" x="16" y="562" width="80" height="40"/>
+                                <color key="backgroundColor" red="0.1681061606" green="0.51251136470000003" blue="0.88495790159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="WTS-5e-pj0"/>
+                                    <constraint firstAttribute="height" constant="40" id="f6J-W6-A3e"/>
+                                </constraints>
+                                <state key="normal" title="Find">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="buttonClicked:" destination="4tq-9d-dML" eventType="touchUpInside" id="R8o-00-jL1"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IOg-xf-sEE" firstAttribute="top" secondItem="mmP-sX-a6u" secondAttribute="bottom" constant="8" id="FLb-qd-FHo"/>
+                            <constraint firstItem="tKG-Zt-NEQ" firstAttribute="top" secondItem="mQd-S1-H7I" secondAttribute="top" constant="16" id="FPf-RL-b7M"/>
+                            <constraint firstItem="mmP-sX-a6u" firstAttribute="top" secondItem="ofE-Ql-nR4" secondAttribute="bottom" constant="8" id="GIr-AW-taP"/>
+                            <constraint firstItem="ofE-Ql-nR4" firstAttribute="leading" secondItem="6Kv-zk-UbW" secondAttribute="leading" id="L01-eP-hwf"/>
+                            <constraint firstItem="ofE-Ql-nR4" firstAttribute="leading" secondItem="IOg-xf-sEE" secondAttribute="leading" id="Rzb-JP-fpE"/>
+                            <constraint firstAttribute="trailing" secondItem="ofE-Ql-nR4" secondAttribute="trailing" id="YCU-wK-ueJ"/>
+                            <constraint firstItem="ZTF-ro-aTB" firstAttribute="leading" secondItem="mQd-S1-H7I" secondAttribute="leading" constant="16" id="bWo-PO-1ZQ"/>
+                            <constraint firstItem="tKG-Zt-NEQ" firstAttribute="leading" secondItem="mQd-S1-H7I" secondAttribute="leading" constant="16" id="cM5-dA-pAg"/>
+                            <constraint firstItem="ofE-Ql-nR4" firstAttribute="trailing" secondItem="IOg-xf-sEE" secondAttribute="trailing" id="dDx-VB-4Jr"/>
+                            <constraint firstItem="ofE-Ql-nR4" firstAttribute="top" secondItem="tKG-Zt-NEQ" secondAttribute="bottom" constant="8" id="dVv-hY-p9e"/>
+                            <constraint firstItem="mQd-S1-H7I" firstAttribute="bottom" secondItem="ZTF-ro-aTB" secondAttribute="bottom" constant="16" id="kl1-Ie-5GH"/>
+                            <constraint firstItem="mmP-sX-a6u" firstAttribute="leading" secondItem="tKG-Zt-NEQ" secondAttribute="leading" id="poi-Xe-orr"/>
+                            <constraint firstItem="IOg-xf-sEE" firstAttribute="top" secondItem="mmP-sX-a6u" secondAttribute="bottom" constant="8" symbolic="YES" id="vDE-QU-nb6"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mQd-S1-H7I"/>
                     </view>
+                    <connections>
+                        <outlet property="busStopPicker" destination="ofE-Ql-nR4" id="EMb-9s-Hck"/>
+                        <outlet property="datePicker" destination="IOg-xf-sEE" id="Z1y-0V-kmu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kfC-aS-kCf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2394" y="355"/>
+            <point key="canvasLocation" x="2392.8000000000002" y="354.87256371814095"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

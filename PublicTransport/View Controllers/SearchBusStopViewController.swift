@@ -14,6 +14,11 @@ class SearchBusStopViewController: UIViewController {
     @IBOutlet weak var currentLocationSwitch: UISwitch!
     @IBOutlet weak var findButton: UIButton!
     
+    var latitude:Float?
+    var longitude:Float?
+    var allLocations:[Location] = []
+    let helper = LocationsHelper()
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -24,7 +29,21 @@ class SearchBusStopViewController: UIViewController {
     }
     
     @IBAction func buttonClicked(_ sender: UIButton) {
-        performSegue(withIdentifier: "searchTimetableLast", sender: findButton)
+        if currentLocationSwitch.isOn {
+            self.allLocations = helper.loadObjectArray(forKey: "allLocations")
+            self.latitude = allLocations.last?.lat
+            self.longitude = allLocations.last?.long
+            performSegue(withIdentifier: "searchTimetableLast", sender: findButton)
+        }
+        else {
+            if isCorrectAddress() {
+                performSegue(withIdentifier: "searchTimetableLast", sender: findButton)
+            }
+            else {
+                self.alert(message: "Address could not be found. Please try again.", title: "Invalid address")
+                addressInputLabel.text = ""
+            }
+        }
     }
     
     @IBAction func switchIsChanged(_ sender: UISwitch) {
@@ -34,6 +53,16 @@ class SearchBusStopViewController: UIViewController {
         } else {
             addressInputLabel.isUserInteractionEnabled = true
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! SearchTimetableViewController
+        destination.latitude = self.latitude!
+        destination.longitude = self.longitude!
+    }
+    
+    func isCorrectAddress() -> Bool {
+        return false
     }
 }
 
