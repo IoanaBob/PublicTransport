@@ -59,8 +59,8 @@ struct LocationScenarios {
         let bearing = "NW" + numberStr
         let locality = "Roath"
         let indicator = "o/s"
-        let longitude = 0.1 * Double(2 + number)
-        let latitude = 0.1 * Double(2 + number)
+        let longitude = 0.1 * Float(2 + number)
+        let latitude = 0.1 * Float(2 + number)
         return BusStation.init(atcocode: atcocode, mode: mode, name: name, stop_name: name, smscode: smscode, bearing: bearing, locality: locality, indicator: indicator, longitude:Float(longitude), latitude:Float(latitude), distance: distance)
     }
 }

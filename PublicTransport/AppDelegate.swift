@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         print("==============================")
         
         // create two inits for cleaner initializations - nearestbus, note, delay not necessary
-        let currentLocation = Location.init(lat: lastloc.coordinate.latitude, long: lastloc.coordinate.longitude, currentSpeed: (manager.location?.speed)!)
+        let currentLocation = Location.init(lat: Float(lastloc.coordinate.latitude), long: Float(lastloc.coordinate.longitude), currentSpeed: Float((manager.location?.speed)!))
         significantLocations.addLocationIfSignificant(loc: currentLocation)
         if significantLocations.locations.count > 100 {
             significantLocations.addToDB()

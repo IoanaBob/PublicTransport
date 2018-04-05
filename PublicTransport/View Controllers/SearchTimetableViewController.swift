@@ -8,16 +8,33 @@
 
 import UIKit
 
-class SearchTimetableViewController: UIViewController {
-    
+class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var busStopPicker: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
+    var nearbyStops:[String]?
     var latitude:Float?
     var longitude:Float?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.busStopPicker.delegate = self
+        self.busStopPicker.dataSource = self
+        
+        nearbyStops = getNearbyStops().stops.map { $0.name }
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return nearbyStops?.count ?? 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return nearbyStops![row]
     }
     
     func getNearbyStops() -> BusStations {
@@ -37,7 +54,12 @@ class SearchTimetableViewController: UIViewController {
             }
             Variables.requestingNearestBusStations = false
         }
-        return stops
+        
+        // should give a notification before but this is for testing purposes
+        let busStops:[BusStation] = [BusStation.init(atcocode: "HAHA", mode: "bus", name: "Ioana's Stop", stop_name: "Ioana's Stop", smscode: "scz", bearing: "SE", locality: "Roath", indicator: "bla", longitude: -1, latitude: 50, distance: 100), BusStation.init(atcocode: "HAHA", mode: "bus", name: "Ioana's Stop 2", stop_name: "Ioana's Stop 2", smscode: "scz", bearing: "SE", locality: "Roath", indicator: "bla", longitude: -1.1, latitude: 50.1, distance: 200)]
+        let defaultStops = BusStations.init(stops: busStops)
+        
+        return stops ?? defaultStops
     }
     
     override func didReceiveMemoryWarning() {

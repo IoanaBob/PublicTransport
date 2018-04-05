@@ -9,14 +9,14 @@ import Foundation
 import CoreLocation
 
 // in meters/second; equivalent to 14km/h
-let walkingSpeedTreshold:Double = 14000/3600
+let walkingSpeedTreshold:Float = 14000/3600
 let defaults = UserDefaults.standard
 
 struct Location: Codable, Equatable {
-    let lat: Double
-    let long: Double
+    let lat: Float
+    let long: Float
     let time: Date
-    let currentSpeed: Double
+    let currentSpeed: Float
     // information from Transport API
     var nearestBusStation: BusStation?
     var note:busNotes = .none
@@ -25,7 +25,7 @@ struct Location: Codable, Equatable {
         return lhs.lat == rhs.lat && lhs.long == rhs.long
     }
     
-    init(lat: Double, long: Double, currentSpeed: Double) {
+    init(lat: Float, long: Float, currentSpeed: Float) {
         self.lat = lat
         self.long = long
         self.nearestBusStation = nil
@@ -34,7 +34,7 @@ struct Location: Codable, Equatable {
         self.note = .none
     }
     
-    init(lat: Double, long: Double, nearestBusStation: BusStation, note: busNotes, currentSpeed: Double) {
+    init(lat: Float, long: Float, nearestBusStation: BusStation, note: busNotes, currentSpeed: Float) {
         self.lat = lat
         self.long = long
         self.nearestBusStation = nearestBusStation

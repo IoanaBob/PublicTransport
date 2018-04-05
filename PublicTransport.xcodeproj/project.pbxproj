@@ -17,6 +17,7 @@
 		4F9E4B6F2073B5A900773368 /* SearchTimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E4B6E2073B5A900773368 /* SearchTimetableViewController.swift */; };
 		4F9E4B712073D98400773368 /* SearchBusStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E4B702073D98400773368 /* SearchBusStopViewController.swift */; };
 		4FBFD92D20310D7B000BFAF9 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBFD92C20310D7B000BFAF9 /* extensions.swift */; };
+		4FCB920D2076C365006396F2 /* BusStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F767078202B66020074D848 /* BusStation.swift */; };
 		7C119B9C2028BDFE0016BCDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9B2028BDFE0016BCDB /* AppDelegate.swift */; };
 		7C119B9E2028BDFE0016BCDB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9D2028BDFE0016BCDB /* FirstViewController.swift */; };
 		7C119BA02028BDFE0016BCDB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9F2028BDFE0016BCDB /* SecondViewController.swift */; };
@@ -357,6 +358,7 @@
 				4F8904A720372B3900C904BE /* Location.swift in Sources */,
 				7C119BB32028BDFE0016BCDB /* PublicTransportTests.swift in Sources */,
 				7CFC27E7203AE63800FED659 /* LocationScenarios.swift in Sources */,
+				4FCB920D2076C365006396F2 /* BusStation.swift in Sources */,
 				7C7DA65B203B3B1700591BA0 /* BusStationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
