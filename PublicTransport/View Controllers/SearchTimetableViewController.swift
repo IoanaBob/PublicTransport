@@ -12,9 +12,10 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBOutlet weak var busStopPicker: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    var nearbyStops:[String]?
+    var nearbyStops:[[String]]?
     var latitude:Float?
     var longitude:Float?
+    var timetable:Timetable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
         self.busStopPicker.delegate = self
         self.busStopPicker.dataSource = self
         
-        nearbyStops = getNearbyStops().stops.map { $0.name }
+        nearbyStops = getNearbyStops().stops.map { [$0.name, String(describing: $0.distance)] }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -34,7 +35,7 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return nearbyStops![row]
+        return nearbyStops![row][0] + ", " + nearbyStops![row][1] + " meters"
     }
     
     func getNearbyStops() -> BusStations {
@@ -56,14 +57,14 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
         }
         
         // should give a notification before but this is for testing purposes
-        let busStops:[BusStation] = [BusStation.init(atcocode: "HAHA", mode: "bus", name: "Ioana's Stop", stop_name: "Ioana's Stop", smscode: "scz", bearing: "SE", locality: "Roath", indicator: "bla", longitude: -1, latitude: 50, distance: 100), BusStation.init(atcocode: "HAHA", mode: "bus", name: "Ioana's Stop 2", stop_name: "Ioana's Stop 2", smscode: "scz", bearing: "SE", locality: "Roath", indicator: "bla", longitude: -1.1, latitude: 50.1, distance: 200)]
+        let busStops:[BusStation] = [BusStation.init(atcocode: "5710AWA10617", mode: "bus", name: "Treharris Street", stop_name: "Treharris Street", smscode: "cdipaga", bearing: "SE", locality: "Roath", indicator: "o/s", longitude: -3.16913, latitude: 51.48983, distance: 61), BusStation.init(atcocode: "5710AWA10616", mode: "bus", name: "Northcote Lane", stop_name: "Northcote Lane", smscode: "cdimwmj", bearing: "NW", locality: "Roath", indicator: "o/s", longitude: -3.16972, latitude: 51.49001, distance: 99)]
         let defaultStops = BusStations.init(stops: busStops)
         
         return stops ?? defaultStops
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! TimetableViewController
+        destination.timetable = self.timetable
     }
 }

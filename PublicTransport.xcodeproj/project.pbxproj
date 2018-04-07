@@ -18,6 +18,7 @@
 		4F9E4B712073D98400773368 /* SearchBusStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E4B702073D98400773368 /* SearchBusStopViewController.swift */; };
 		4FBFD92D20310D7B000BFAF9 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBFD92C20310D7B000BFAF9 /* extensions.swift */; };
 		4FCB920D2076C365006396F2 /* BusStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F767078202B66020074D848 /* BusStation.swift */; };
+		4FCB920F2077A2BE006396F2 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCB920E2077A2BE006396F2 /* TimetableViewController.swift */; };
 		7C119B9C2028BDFE0016BCDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9B2028BDFE0016BCDB /* AppDelegate.swift */; };
 		7C119B9E2028BDFE0016BCDB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9D2028BDFE0016BCDB /* FirstViewController.swift */; };
 		7C119BA02028BDFE0016BCDB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9F2028BDFE0016BCDB /* SecondViewController.swift */; };
@@ -60,6 +61,7 @@
 		4F9E4B6E2073B5A900773368 /* SearchTimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTimetableViewController.swift; sourceTree = "<group>"; };
 		4F9E4B702073D98400773368 /* SearchBusStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBusStopViewController.swift; sourceTree = "<group>"; };
 		4FBFD92C20310D7B000BFAF9 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		4FCB920E2077A2BE006396F2 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
 		7C119B982028BDFE0016BCDB /* PublicTransport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PublicTransport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C119B9B2028BDFE0016BCDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C119B9D2028BDFE0016BCDB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				7C119B9F2028BDFE0016BCDB /* SecondViewController.swift */,
 				4F9E4B6E2073B5A900773368 /* SearchTimetableViewController.swift */,
 				4F9E4B702073D98400773368 /* SearchBusStopViewController.swift */,
+				4FCB920E2077A2BE006396F2 /* TimetableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				4F9E4B6F2073B5A900773368 /* SearchTimetableViewController.swift in Sources */,
 				4F8904AB203740B800C904BE /* Variables.swift in Sources */,
 				4F9E4B6B206FDE9700773368 /* HttpClient.swift in Sources */,
+				4FCB920F2077A2BE006396F2 /* TimetableViewController.swift in Sources */,
 				4F9E4B712073D98400773368 /* SearchBusStopViewController.swift in Sources */,
 				7CDD046B202A1848002451EF /* Location.swift in Sources */,
 				7C119B9E2028BDFE0016BCDB /* FirstViewController.swift in Sources */,
