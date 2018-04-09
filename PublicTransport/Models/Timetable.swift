@@ -18,9 +18,9 @@ struct TimetableItem: Codable {
     let expected_departure_date: String
     let best_departure_estimate: String
     let dir: String
-    let id: Int
+    let id: String
     let source: String
-    let delay: String
+    let delay: Int
 }
 
 struct Timetable: Codable {

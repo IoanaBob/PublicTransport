@@ -23,21 +23,16 @@ class SearchBusStopViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBAction func buttonClicked(_ sender: UIButton) {
         if currentLocationSwitch.isOn {
             self.allLocations = helper.loadObjectArray(forKey: "allLocations")
             self.latitude = allLocations.last?.lat
             self.longitude = allLocations.last?.long
-            performSegue(withIdentifier: "searchTimetableLast", sender: findButton)
+            performSegue(withIdentifier: "searchBusStop", sender: findButton)
         }
         else {
             if isCorrectAddress() {
-                performSegue(withIdentifier: "searchTimetableLast", sender: findButton)
+                performSegue(withIdentifier: "searchBusStop", sender: findButton)
             }
             else {
                 self.alert(message: "Address could not be found. Please try again.", title: "Invalid address")
