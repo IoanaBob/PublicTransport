@@ -392,10 +392,10 @@
             </objects>
             <point key="canvasLocation" x="2392.8000000000002" y="354.87256371814095"/>
         </scene>
-        <!--Timetable View Controller-->
+        <!--Timetable-->
         <scene sceneID="3fr-yr-C86">
             <objects>
-                <viewController id="C97-Zg-3UR" customClass="TimetableViewController" customModule="PublicTransport" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Timetable" id="C97-Zg-3UR" customClass="TimetableViewController" customModule="PublicTransport" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mMi-RZ-Nj9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

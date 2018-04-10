@@ -17,6 +17,7 @@ class SearchBusStopViewController: UIViewController {
     var latitude:Float?
     var longitude:Float?
     var allLocations:[Location] = []
+    var busStops:BusStations?
     let helper = LocationsHelper()
 
     override func viewDidLoad() {
@@ -35,7 +36,7 @@ class SearchBusStopViewController: UIViewController {
                 performSegue(withIdentifier: "searchBusStop", sender: findButton)
             }
             else {
-                self.alert(message: "Address could not be found. Please try again.", title: "Invalid address")
+                self.alert(message: "Postcode could not be found. Please try again.", title: "Invalid postcode")
                 addressInputLabel.text = ""
             }
         }
@@ -52,12 +53,47 @@ class SearchBusStopViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! SearchTimetableViewController
-        destination.latitude = self.latitude!
-        destination.longitude = self.longitude!
+        
+        destination.busStops = getNearbyStops()
+        //destination.latitude = self.latitude!
+        //destination.longitude = self.longitude!
     }
     
     func isCorrectAddress() -> Bool {
         return false
+    }
+    
+    func getNearbyStops() -> BusStations {
+        var stops:BusStations?
+        Variables.requestingNearestBusStations = true
+        
+        // for testing on computer. this should be removed soon
+        self.latitude = 51.4893106
+        self.longitude = -3.16884189
+        
+        let group = DispatchGroup()
+        group.enter()
+        BusStations.allBusStations(lat: self.latitude!, long: self.longitude!) { (busStations, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            guard let busStations = busStations else {
+                print("error getting all: result is nil")
+                return
+            }
+            if busStations.stops.isEmpty {
+                self.alert(message: "No nearby stops could be found. Please try with a different location.", title: "No bus stops")
+                self.addressInputLabel.text = ""
+            }
+            else {
+                stops = busStations
+            }
+            group.leave()
+        }
+        Variables.requestingNearestBusStations = false
+        group.wait()
+        return stops!
     }
 }
 

@@ -37,7 +37,6 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
                 return
             }
             self.timetable = receivedTimetable
-            print("hey i got the data")
             DispatchQueue.main.async(execute: {() -> Void in
                 self.timetableTableView.reloadData()
             })

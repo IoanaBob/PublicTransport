@@ -23,10 +23,10 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
     let timePicker = UIDatePicker()
     let busStopPicker = UIPickerView()
     
-    var busStops:[BusStation]?
+    var busStops:BusStations?
     var nearbyStops:[[String]]?
-    var latitude:Float?
-    var longitude:Float?
+    //var latitude:Float?
+    //var longitude:Float?
     var timetable:Timetable?
     
     override func viewDidLoad() {
@@ -39,8 +39,7 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
         createDatePicker()
         createTimePicker()
         
-        busStops = getNearbyStops().stops
-        nearbyStops = getNearbyStops().stops.map { [$0.name, String(describing: $0.distance)] }
+        nearbyStops = busStops?.stops.map { [$0.name, String(describing: $0.distance)] }
         
         self.hideWhenTappedAround()
         
@@ -70,7 +69,7 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! TimetableViewController
-        let selectedBusStop = busStops![busStopPicker.selectedRow(inComponent: 0)]
+        let selectedBusStop = busStops!.stops[busStopPicker.selectedRow(inComponent: 0)]
         destination.atcocode = selectedBusStop.atcocode
         destination.dateField = dateField.text!
         destination.timeField = timeField.text!
@@ -92,31 +91,6 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         busStopField.text = nearbyStops![row][0]
         busStopField.resignFirstResponder()
-    }
-    
-    func getNearbyStops() -> BusStations {
-        Variables.requestingNearestBusStations = true
-        var stops:BusStations?
-        BusStations.allBusStations(lat: self.latitude!, long: self.longitude!) { (busStations, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            guard let busStations = busStations else {
-                print("error getting all: result is nil")
-                return
-            }
-            if !busStations.stops.isEmpty {
-                stops = busStations
-            }
-            Variables.requestingNearestBusStations = false
-        }
-        
-        // should give a notification before but this is for testing purposes
-        let busStops:[BusStation] = [BusStation.init(atcocode: "5710AWA10617", mode: "bus", name: "Treharris Street", stop_name: "Treharris Street", smscode: "cdipaga", bearing: "SE", locality: "Roath", indicator: "o/s", longitude: -3.16913, latitude: 51.48983, distance: 61), BusStation.init(atcocode: "5710AWA10616", mode: "bus", name: "Northcote Lane", stop_name: "Northcote Lane", smscode: "cdimwmj", bearing: "NW", locality: "Roath", indicator: "o/s", longitude: -3.16972, latitude: 51.49001, distance: 99)]
-        let defaultStops = BusStations.init(stops: busStops)
-        
-        return stops ?? defaultStops
     }
     
     private func createDatePicker() {
