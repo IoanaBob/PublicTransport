@@ -149,39 +149,45 @@ class Locations {
     func addToDB() {
         let newLocations = findBusStopTimes()
         for stop in newLocations {
-            var params = [String:Any]()
-            
-            params["atcocode"] = stop.nearestBusStation?.atcocode
-            params["mode"] = stop.nearestBusStation?.mode
-            params["name"] = stop.nearestBusStation?.name
-            params["smscode"] = stop.nearestBusStation?.smscode
-            params["bearing"] = stop.nearestBusStation?.bearing
-            params["locality"] = stop.nearestBusStation?.locality
-            params["indicator"] = stop.nearestBusStation?.indicator
-            params["longitude"] = stop.nearestBusStation?.longitude
-            params["latitude"] = stop.nearestBusStation?.latitude
-            params["distance"] = stop.nearestBusStation?.distance
+            let params:[String:Any] = [
+                "atcocode": stop.nearestBusStation!.atcocode,
+                "mode": stop.nearestBusStation!.mode,
+                "name": stop.nearestBusStation!.name,
+                "stop_name": stop.nearestBusStation!.stop_name,
+                "smscode": stop.nearestBusStation!.smscode,
+                "bearing": stop.nearestBusStation!.bearing,
+                "locality": stop.nearestBusStation!.locality,
+                "indicator": stop.nearestBusStation!.indicator,
+                "longitude": stop.nearestBusStation!.longitude,
+                "latitude": stop.nearestBusStation!.latitude,
+                "distance": stop.nearestBusStation!.distance,
+                ]
             
             HttpClientApi.instance().postElement(url: "/bus_stop", params: params, success: { (data, response, error) in
                 print("POST bus stop succesful!")
                 
-                let url = "/location/" + String(describing: data?.id)
-                var locationParams = [String:Any]()
-                locationParams["note"] = stop.note.hashValue
-                locationParams["latitude"] = stop.lat
-                locationParams["longitude"] = stop.long
-                locationParams["time"] = Helper().formatDate(stop.time)
-                locationParams["current_speed"] = stop.currentSpeed
+                let url = "/location/" + String(describing: data!.id)
+                
+                let locationParams:[String:Any] = [
+                    "note": stop.note.hashValue,
+                    "latitude": stop.lat,
+                    "longitude": stop.long,
+                    "time": Helper().formatDate(stop.time),
+                    "current_speed": stop.currentSpeed,
+                    ]
                 
                 HttpClientApi.instance().postElement(url: url, params: locationParams, success: { (data, response, error) in
                     print("POST location succesful!")
                 }, failure: { (data, response, error) in
-                    // API call Failure
+                    print("POST location failure")
+                    print(error as Any)
                 })
             }, failure: { (data, response, error) in
-                // API call Failure
-            })
-        }
+                print("POST bus stop failure")
+                print(error as Any)
+            }) // end api call
+        } // end loop
+        
         // emptying locations because we don't need them anymore
         emptyLocations()
     }

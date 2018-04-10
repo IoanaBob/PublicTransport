@@ -68,8 +68,8 @@ class SearchBusStopViewController: UIViewController {
         Variables.requestingNearestBusStations = true
         
         // for testing on computer. this should be removed soon
-        self.latitude = 51.4893106
-        self.longitude = -3.16884189
+        //self.latitude = 51.4893106
+        //self.longitude = -3.16884189
         
         let group = DispatchGroup()
         group.enter()

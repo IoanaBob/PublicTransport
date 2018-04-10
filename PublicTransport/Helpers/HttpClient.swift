@@ -70,7 +70,7 @@ class HttpClientApi: NSObject{
         print("URL = \(url)")
         
         if let params = params {
-            let  jsonData = try? JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+            let  jsonData = try? JSONSerialization.data(withJSONObject: params)
             
             request?.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request?.httpBody = jsonData
@@ -104,7 +104,7 @@ class HttpClientApi: NSObject{
             else {
                 failure(data , response as? HTTPURLResponse, error as NSError?)
             }
-            }.resume()
+        }.resume()
     }
     
     func getTimetable(atco: String, date: String, time: String, completionHandler: @escaping (Timetable?, Error?) -> Void) {

@@ -27,7 +27,7 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
         timetableTableView.delegate = self
         timetableTableView.dataSource = self
         
-        defaultsKey = "timetable-\(timeField)-\(getDayOfWeek(date: dateField!))-\(atcocode)"
+        defaultsKey = "timetable-\(String(describing: timeField))-\(getDayOfWeek(dateField!))-\(String(describing: atcocode))"
         addFavoritesButton()
     }
     
@@ -97,20 +97,21 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         else {
             // user wants to add to favorites
-            let valueToSave = ["atcocode": atcocode, "date": dateField, "time": timeField]
+            let valueToSave = ["atcocode": atcocode, "date": dateField, "time": timeField, "weekday": getDayOfWeek(dateField!)]
             defaults.set(valueToSave, forKey: defaultsKey!)
             favoritesButton.setImage(UIImage(named: "loved"), for: UIControlState.normal)
         }
     }
     
-    private func getDayOfWeek(date:String)->Int {
+    private func getDayOfWeek(_ date:String)->String {
+        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday"]
         let formatter  = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let theDate = formatter.date(from: date)!
         let myCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
         let myComponents = myCalendar.components(.weekday, from: theDate)
         let weekDay = myComponents.weekday
-        return weekDay!
+        return days[weekDay! - 1]
     }
 }
 

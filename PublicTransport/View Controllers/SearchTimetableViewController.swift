@@ -39,9 +39,12 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
         createDatePicker()
         createTimePicker()
         
-        nearbyStops = busStops?.stops.map { [$0.name, String(describing: $0.distance)] }
+        setBusLineHidden(true)
         
+        // hide keyboard if anyone clicks on the other side of the screen
         self.hideWhenTappedAround()
+        
+        nearbyStops = busStops?.stops.map { [$0.name, String(describing: $0.distance)] }
         
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -59,11 +62,9 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
     @IBAction func switchIsChanged(_ sender: UISwitch) {
         if busLineSearchSwitch.isOn {
             busLineField.text = ""
-            busLineField.isHidden = false
-            busLineLabel.isHidden = false
+            setBusLineHidden(false)
         } else {
-            busLineField.isHidden = true
-            busLineLabel.isHidden = true
+            setBusLineHidden(true)
         }
     }
     
@@ -144,6 +145,11 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
         timeField.text =  formatter.string(from: (timePicker.date))
         
         self.view.endEditing(true)
+    }
+    
+    private func setBusLineHidden(_ truth: Bool) {
+        busLineField.isHidden = truth
+        busLineLabel.isHidden = truth
     }
     
     @objc private func choseBusStop(){
