@@ -94,6 +94,11 @@ class SearchBusStopViewController: UIViewController {
         Variables.requestingNearestBusStations = false
         group.wait()
         return stops!
+        
+        // should give a notification before but this is for testing purposes
+        //        let busStops:[BusStation] = [BusStation.init(atcocode: "5710AWA10617", mode: "bus", name: "Treharris Street", stop_name: "Treharris Street", smscode: "cdipaga", bearing: "SE", locality: "Roath", indicator: "o/s", longitude: -3.16913, latitude: 51.48983, distance: 61), BusStation.init(atcocode: "5710AWA10616", mode: "bus", name: "Northcote Lane", stop_name: "Northcote Lane", smscode: "cdimwmj", bearing: "NW", locality: "Roath", indicator: "o/s", longitude: -3.16972, latitude: 51.49001, distance: 99)]
+        //        let defaultStops = BusStations.init(stops: busStops)
+        //        return stops ?? defaultStops
     }
 }
 

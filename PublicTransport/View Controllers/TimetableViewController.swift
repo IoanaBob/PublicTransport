@@ -11,6 +11,11 @@ import UIKit
 class TimetableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var timetableTableView: UITableView!
+    // button that saves to favorites has to be added programatically
+    let favoritesButton = UIButton.init(type: .custom)
+    
+    let defaults = UserDefaults.standard
+    var defaultsKey:String?
     
     var timetable:Timetable?
     var atcocode: String?
@@ -21,6 +26,28 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         timetableTableView.delegate = self
         timetableTableView.dataSource = self
+        
+        defaultsKey = "timetable-\(timeField)-\(getDayOfWeek(date: dateField!))-\(atcocode)"
+        addFavoritesButton()
+    }
+    
+    func addFavoritesButton() {
+        // see what is the status from phone memory
+        if (defaults.object(forKey: defaultsKey!) != nil) {
+            favoritesButton.setImage(UIImage(named: "loved"), for: UIControlState.normal)
+        }
+        else {
+            favoritesButton.setImage(UIImage(named: "not_loved"), for: UIControlState.normal)
+        }
+        
+        //add function for button
+        favoritesButton.addTarget(self, action: #selector(changedFavorite), for: UIControlEvents.touchUpInside)
+        //set frame
+        favoritesButton.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        
+        let barButton = UIBarButtonItem(customView: favoritesButton)
+        //assign button to navigation bar
+        self.navigationItem.rightBarButtonItem = barButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +87,30 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.delay.text = String(describing: timetable!.all[indexPath.row].delay)
         
         return cell
+    }
+    
+    @objc func changedFavorite() {
+        if (defaults.object(forKey: defaultsKey!) != nil) {
+            // user wants to remove from favorites
+            defaults.removeObject(forKey: defaultsKey!)
+            favoritesButton.setImage(UIImage(named: "not_loved"), for: UIControlState.normal)
+        }
+        else {
+            // user wants to add to favorites
+            let valueToSave = ["atcocode": atcocode, "date": dateField, "time": timeField]
+            defaults.set(valueToSave, forKey: defaultsKey!)
+            favoritesButton.setImage(UIImage(named: "loved"), for: UIControlState.normal)
+        }
+    }
+    
+    private func getDayOfWeek(date:String)->Int {
+        let formatter  = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let theDate = formatter.date(from: date)!
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+        let myComponents = myCalendar.components(.weekday, from: theDate)
+        let weekDay = myComponents.weekday
+        return weekDay!
     }
 }
 
