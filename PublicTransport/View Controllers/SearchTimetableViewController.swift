@@ -27,7 +27,6 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
     var nearbyStops:[[String]]?
     //var latitude:Float?
     //var longitude:Float?
-    var timetable:Timetable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +73,6 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
         destination.atcocode = selectedBusStop.atcocode
         destination.dateField = dateField.text!
         destination.timeField = timeField.text!
-        destination.timetable = self.timetable
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

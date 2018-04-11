@@ -97,29 +97,6 @@ class Locations {
         }
     }
     
-    func hasLeftBusAt() -> [Location] {
-        var inStationAtLocations:[Location] = []
-        var lastStationIndex:Int = 0
-        for var loc in locations {
-            print("index = " + String(locations.index(of: loc)!) )
-            guard var nextLoc = locations.item(after: loc) else {return inStationAtLocations}
-            let inVehicle = isInVehicle(index: locations.index(of: loc)!, since: lastStationIndex)
-            // after leaving the station, busses usually sprint therefore checking if the next location has driving speed
-            if loc.isWaitingInStation() && nextLoc.isInVehicle() {
-                loc.note = .leftStation
-                lastStationIndex = locations.index(of: loc)!
-                inStationAtLocations.append(loc)
-            }
-            // when arriving in station checks against all previous locations
-            if inVehicle && nextLoc.isWaitingInStation() {
-                nextLoc.note = .arrivedStation
-                lastStationIndex = locations.index(of: loc)!
-                inStationAtLocations.append(nextLoc)
-            }
-        }
-        return inStationAtLocations
-    }
-    
     // checks if any of the locations after the previous bus stop had driving speed
     func isInVehicle (index: Int, since firstIndex: Int) -> Bool {
         if firstIndex == index {
@@ -215,6 +192,29 @@ class Locations {
             }
         }
         return busStopTimes
+    }
+    
+    func hasLeftBusAt() -> [Location] {
+        var inStationAtLocations:[Location] = []
+        var lastStationIndex:Int = 0
+        for var loc in locations {
+            print("index = " + String(locations.index(of: loc)!) )
+            guard var nextLoc = locations.item(after: loc) else {return inStationAtLocations}
+            let inVehicle = isInVehicle(index: locations.index(of: loc)!, since: lastStationIndex)
+            // after leaving the station, busses usually sprint therefore checking if the next location has driving speed
+            if loc.isWaitingInStation() && nextLoc.isInVehicle() {
+                loc.note = .leftStation
+                lastStationIndex = locations.index(of: loc)!
+                inStationAtLocations.append(loc)
+            }
+            // when arriving in station checks against all previous locations
+            if inVehicle && nextLoc.isWaitingInStation() {
+                nextLoc.note = .arrivedStation
+                lastStationIndex = locations.index(of: loc)!
+                inStationAtLocations.append(nextLoc)
+            }
+        }
+        return inStationAtLocations
     }
     
     func emptyLocations() {

@@ -35,6 +35,10 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "selectSavedTimetable", sender: indexPath)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return savedTimetables.count
     }
@@ -45,6 +49,15 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70.0
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! TimetableViewController
+        if let indexPath = sender as? NSIndexPath {
+            destination.atcocode = savedTimetables[indexPath.row]["atcocode"]
+            destination.dateField = savedTimetables[indexPath.row]["date"]
+            destination.timeField = savedTimetables[indexPath.row]["time"]
+        }
     }
 }
     
@@ -65,8 +78,6 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
     //        self.busStopTimesTableView.reloadData()
     //        refreshControl.endRefreshing()
     //    }
-
-
 
 class SavedCell: UITableViewCell {
     @IBOutlet weak var busStop: UILabel!
