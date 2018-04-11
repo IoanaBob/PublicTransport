@@ -22,6 +22,7 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
     var dateField:String?
     var timeField:String?
     var busLineNo:String?
+    var stopName:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,7 +99,7 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         else {
             // user wants to add to favorites
-            let valueToSave = ["atcocode": atcocode, "date": dateField, "time": timeField, "weekday": getDayOfWeek(dateField!)]
+            let valueToSave = ["atcocode": atcocode, "date": dateField, "time": timeField, "weekday": getDayOfWeek(dateField!), "name": stopName]
             defaults.set(valueToSave, forKey: defaultsKey!)
             favoritesButton.setImage(UIImage(named: "loved"), for: UIControlState.normal)
         }

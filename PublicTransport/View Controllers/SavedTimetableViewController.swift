@@ -32,7 +32,7 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:SavedCell = tableView.dequeueReusableCell(withIdentifier: "savedBusStopCell") as! SavedCell
-        cell.busStop.text = savedTimetables[indexPath.row]["atcocode"]
+        cell.busStop.text = savedTimetables[indexPath.row]["name"]
         cell.time.text = savedTimetables[indexPath.row]["time"]
         cell.weekday.text = savedTimetables[indexPath.row]["weekday"]
         return cell
@@ -51,7 +51,7 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70.0
+        return 100.0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

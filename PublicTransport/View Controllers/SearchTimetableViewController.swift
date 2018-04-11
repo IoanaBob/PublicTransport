@@ -71,6 +71,7 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
         let destination = segue.destination as! TimetableViewController
         let selectedBusStop = busStops!.stops[busStopPicker.selectedRow(inComponent: 0)]
         destination.atcocode = selectedBusStop.atcocode
+        destination.stopName = selectedBusStop.name
         destination.dateField = dateField.text!
         destination.timeField = timeField.text!
         if (busLineSearchSwitch.isOn) {
