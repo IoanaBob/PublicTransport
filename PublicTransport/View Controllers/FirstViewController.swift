@@ -47,18 +47,18 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         switch indexPath.section {
         case 0:
             let cell:BusLeavingTimesCell = tableView.dequeueReusableCell(withIdentifier: "busLeavingTimesCell") as! BusLeavingTimesCell
-            cell.busStation.text = busStopTimes[indexPath.row].nearestBusStation?.name ?? "Unknown"
+            cell.busStop.text = busStopTimes[indexPath.row].nearestBusStop?.name ?? "Unknown"
             cell.time.text = Helper().formatDate(busStopTimes[indexPath.row].time)
             return cell
         case 2:
             let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "POST")!
             return cell
         default:
-            let cell:BusStationCell = tableView.dequeueReusableCell(withIdentifier: "allLocationsCell") as! BusStationCell
-            cell.busStation.text = allLocations[indexPath.row].nearestBusStation?.name ?? "Unknown"
+            let cell:BusStopCell = tableView.dequeueReusableCell(withIdentifier: "allLocationsCell") as! BusStopCell
+            cell.busStop.text = allLocations[indexPath.row].nearestBusStop?.name ?? "Unknown"
             cell.time.text = Helper().formatDate(allLocations[indexPath.row].time)
             cell.speed.text = String(allLocations[indexPath.row].currentSpeed)
-            cell.distance.text = String(describing: allLocations[indexPath.row].nearestBusStation?.distance ?? -1) 
+            cell.distance.text = String(describing: allLocations[indexPath.row].nearestBusStop?.distance ?? -1) 
             return cell
         }
     }
@@ -77,17 +77,17 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func postLocationToDB(_ sender: Any) {
         let stop = allLocations.last!
         let params:[String:Any] = [
-            "atcocode": stop.nearestBusStation!.atcocode,
-            "mode": stop.nearestBusStation!.mode,
-            "name": stop.nearestBusStation!.name,
-            "stop_name": stop.nearestBusStation!.stop_name,
-            "smscode": stop.nearestBusStation!.smscode,
-            "bearing": stop.nearestBusStation!.bearing,
-            "locality": stop.nearestBusStation!.locality,
-            "indicator": stop.nearestBusStation!.indicator,
-            "longitude": stop.nearestBusStation!.longitude,
-            "latitude": stop.nearestBusStation!.latitude,
-            "distance": stop.nearestBusStation!.distance,
+            "atcocode": stop.nearestBusStop!.atcocode,
+            "mode": stop.nearestBusStop!.mode,
+            "name": stop.nearestBusStop!.name,
+            "stop_name": stop.nearestBusStop!.stop_name,
+            "smscode": stop.nearestBusStop!.smscode,
+            "bearing": stop.nearestBusStop!.bearing,
+            "locality": stop.nearestBusStop!.locality,
+            "indicator": stop.nearestBusStop!.indicator,
+            "longitude": stop.nearestBusStop!.longitude,
+            "latitude": stop.nearestBusStop!.latitude,
+            "distance": stop.nearestBusStop!.distance,
         ]
         
         HttpClientApi.instance().postElement(url: "/bus_stop", params: params, success: { (data, response, error) in
@@ -134,7 +134,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 }
 
 class BusLeavingTimesCell: UITableViewCell {
-    @IBOutlet weak var busStation: UILabel!
+    @IBOutlet weak var busStop: UILabel!
     @IBOutlet weak var time: UILabel!
     
     override func awakeFromNib() {
@@ -142,9 +142,9 @@ class BusLeavingTimesCell: UITableViewCell {
     }
 }
 
-class BusStationCell: UITableViewCell {
+class BusStopCell: UITableViewCell {
     
-    @IBOutlet weak var busStation: UILabel!
+    @IBOutlet weak var busStop: UILabel!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var speed: UILabel!
     @IBOutlet weak var distance: UILabel!

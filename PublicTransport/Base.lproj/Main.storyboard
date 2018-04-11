@@ -66,11 +66,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="busStation" destination="EVl-GZ-PqG" id="bjC-e3-wfl"/>
+                                            <outlet property="busStop" destination="EVl-GZ-PqG" id="bjC-e3-wfl"/>
                                             <outlet property="time" destination="ogT-pL-8O1" id="u5v-RF-0Zw"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="allLocationsCell" rowHeight="70" id="Ays-MD-UT5" customClass="BusStationCell" customModule="PublicTransport" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="allLocationsCell" rowHeight="70" id="Ays-MD-UT5" customClass="BusStopCell" customModule="PublicTransport" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="98" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ays-MD-UT5" id="lH0-ax-2Kf">
@@ -116,7 +116,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="busStation" destination="XXj-y9-Ibc" id="5G5-1n-dlD"/>
+                                            <outlet property="busStop" destination="XXj-y9-Ibc" id="5G5-1n-dlD"/>
                                             <outlet property="distance" destination="Uab-9t-6ZY" id="2Zr-Ae-gCG"/>
                                             <outlet property="speed" destination="es6-oP-Mgo" id="OBl-iI-MDu"/>
                                             <outlet property="time" destination="dmh-Ru-ejm" id="uFA-NY-XXY"/>

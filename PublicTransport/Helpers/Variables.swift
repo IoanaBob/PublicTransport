@@ -9,7 +9,7 @@
 import Foundation
 
 struct Variables {
-    static var requestingNearestBusStations = false
+    static var requestingNearestBusStops = false
 }
 
 struct Helper {

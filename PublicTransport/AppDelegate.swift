@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var window: UIWindow?
     
     var locationManager = CLLocationManager()
-    var significantLocations = Locations()
+    var savedLocations = Locations()
     
     private var startTime: Date?
 
@@ -68,9 +68,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         // create two inits for cleaner initializations - nearestbus, note, delay not necessary
         let currentLocation = Location.init(lat: Float(lastloc.coordinate.latitude), long: Float(lastloc.coordinate.longitude), currentSpeed: Float((manager.location?.speed)!))
-        significantLocations.addLocationIfSignificant(loc: currentLocation)
-        if significantLocations.locations.count > 100 {
-            significantLocations.addToDB()
+        savedLocations.addLocationIfSignificant(loc: currentLocation)
+        if savedLocations.locations.count > 50 {
+            savedLocations.addToDB()
         }
     }
     

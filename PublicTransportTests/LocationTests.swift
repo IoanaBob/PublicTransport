@@ -46,14 +46,14 @@ class LocationTests: XCTestCase {
         XCTAssertEqual(result, [locs.locations[5]])
     }
     
-    func testArrivedBusStation2() {
+    func testArrivedBusStop2() {
         scenarios.addArrivingStation2(locs: locs)
         let result = locs.hasLeftBusAt()
         XCTAssertTrue(result[1].note == .arrivedStation)
         XCTAssertEqual(result[1], locs.locations[8])
     }
     
-    func testLeftBusStation2() {
+    func testLeftBusStop2() {
         scenarios.addArrivingStation2(locs: locs)
         scenarios.addLeavingStation2(locs: locs)
         let result = locs.hasLeftBusAt()
@@ -61,7 +61,7 @@ class LocationTests: XCTestCase {
         XCTAssertEqual(result[2], locs.locations[9])
     }
     
-    func testLeftBusStation2Badly() {
+    func testLeftBusStop2Badly() {
         scenarios.addArrivingStation2(locs: locs)
         scenarios.addLeavingStation2Badly(locs: locs)
         let result = locs.hasLeftBusAt()
@@ -69,14 +69,14 @@ class LocationTests: XCTestCase {
         XCTAssertNotEqual(result.last, locs.locations[9])
     }
     
-    func testArrivedBusStation3() {
+    func testArrivedBusStop3() {
         scenarios.addArrivingStation3(locs: locs)
         let result = locs.hasLeftBusAt()
         XCTAssertTrue(result[1].note == .arrivedStation)
         XCTAssertEqual(result[1], locs.locations[9])
     }
     
-    func testLeavingBusStation3() {
+    func testLeavingBusStop3() {
         scenarios.addArrivingStation3(locs: locs)
         scenarios.addLeavingStation3(locs: locs)
         let result = locs.hasLeftBusAt()

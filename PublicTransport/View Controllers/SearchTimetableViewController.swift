@@ -23,7 +23,7 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
     let timePicker = UIDatePicker()
     let busStopPicker = UIPickerView()
     
-    var busStops:BusStations?
+    var busStops:BusStops?
     var nearbyStops:[[String]]?
     //var latitude:Float?
     //var longitude:Float?

@@ -1,5 +1,5 @@
 //
-//  BusStation.swift
+//  BusStop.swift
 //  PublicTransport
 //
 //  Created by Ioana on 2/7/18.

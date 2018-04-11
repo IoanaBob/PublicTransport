@@ -1,5 +1,5 @@
 //
-//  BusStation.swift
+//  BusStop.swift
 //  PublicTransport
 //
 //  Created by Ioana on 2/7/18.
@@ -13,7 +13,7 @@ enum BackendError: Error {
     case objectSerialization(reason: String)
 }
 
-struct BusStation: Codable {
+struct BusStop: Codable {
     let atcocode: String
     let mode: String
     let name: String
@@ -31,17 +31,22 @@ struct BusStation: Codable {
     }
 }
 
-struct BusStations:Codable {
+struct BusStops:Codable {
     //let request_time: String
-    let stops: [BusStation]
+    let stops: [BusStop]
     
-    static func endpointForBusStations(lat: Float, long: Float) -> String {
-        return "https://transportapi.com/v3/uk/bus/stops/near.json?lat=" + String(lat) + "&lon=" + String(long) +  "&app_id=c12137e2&app_key=703b3fc0bc730dacf75e46ce7b9e9402"
+    static func endpointForBusStops(lat: Float, long: Float) -> String {
+        return "https://transportapi.com/v3/uk/bus/stops/near.json?lat=" + String(lat) + "&lon=" + String(long) +  "&app_id=f67ffe61&app_key=84ead149046c88f0189b3763639d4d15"
+        // ioana's key
+        // key 1: 703b3fc0bc730dacf75e46ce7b9e9402
+        // id 1: c12137e2
+        //key 2: 84ead149046c88f0189b3763639d4d15
+        //id 2: f67ffe61
     }
     
     // TODO: add global variable that states if the completion handler already doing a task, so 3 locations don't appear.
-    static func allBusStations (lat: Float, long: Float, completionHandler: @escaping (BusStations?, Error?) -> Void) {
-        let endpoint = BusStations.endpointForBusStations(lat: lat, long: long)
+    static func allBusStops (lat: Float, long: Float, completionHandler: @escaping (BusStops?, Error?) -> Void) {
+        let endpoint = BusStops.endpointForBusStops(lat: lat, long: long)
         guard let url = URL(string: endpoint) else {
             print("Error: cannot create URL")
             let error = BackendError.urlError(reason: "Could not construct URL")
@@ -65,7 +70,7 @@ struct BusStations:Codable {
             
             let decoder = JSONDecoder()
             do {
-                let stations = try decoder.decode(BusStations.self, from: responseData)
+                let stations = try decoder.decode(BusStops.self, from: responseData)
                 print("decoded JSON data")
                 completionHandler(stations, nil)
             } catch {
@@ -75,6 +80,6 @@ struct BusStations:Codable {
             }
         }
         task.resume()
-        Variables.requestingNearestBusStations = false
+        Variables.requestingNearestBusStops = false
     }
 }

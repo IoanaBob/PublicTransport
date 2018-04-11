@@ -17,7 +17,7 @@ class SearchBusStopViewController: UIViewController {
     var latitude:Float?
     var longitude:Float?
     var allLocations:[Location] = []
-    var busStops:BusStations?
+    var busStops:BusStops?
     let helper = LocationsHelper()
 
     override func viewDidLoad() {
@@ -63,9 +63,9 @@ class SearchBusStopViewController: UIViewController {
         return false
     }
     
-    func getNearbyStops() -> BusStations {
-        var stops:BusStations?
-        Variables.requestingNearestBusStations = true
+    func getNearbyStops() -> BusStops {
+        var stops:BusStops?
+        Variables.requestingNearestBusStops = true
         
         // for testing on computer. this should be removed soon
         //self.latitude = 51.4893106
@@ -73,31 +73,31 @@ class SearchBusStopViewController: UIViewController {
         
         let group = DispatchGroup()
         group.enter()
-        BusStations.allBusStations(lat: self.latitude!, long: self.longitude!) { (busStations, error) in
+        BusStops.allBusStops(lat: self.latitude!, long: self.longitude!) { (busStops, error) in
             if let error = error {
                 print(error)
                 return
             }
-            guard let busStations = busStations else {
+            guard let busStops = busStops else {
                 print("error getting all: result is nil")
                 return
             }
-            if busStations.stops.isEmpty {
+            if busStops.stops.isEmpty {
                 self.alert(message: "No nearby stops could be found. Please try with a different location.", title: "No bus stops")
                 self.addressInputLabel.text = ""
             }
             else {
-                stops = busStations
+                stops = busStops
             }
             group.leave()
         }
-        Variables.requestingNearestBusStations = false
+        Variables.requestingNearestBusStops = false
         group.wait()
         return stops!
         
         // should give a notification before but this is for testing purposes
-        //        let busStops:[BusStation] = [BusStation.init(atcocode: "5710AWA10617", mode: "bus", name: "Treharris Street", stop_name: "Treharris Street", smscode: "cdipaga", bearing: "SE", locality: "Roath", indicator: "o/s", longitude: -3.16913, latitude: 51.48983, distance: 61), BusStation.init(atcocode: "5710AWA10616", mode: "bus", name: "Northcote Lane", stop_name: "Northcote Lane", smscode: "cdimwmj", bearing: "NW", locality: "Roath", indicator: "o/s", longitude: -3.16972, latitude: 51.49001, distance: 99)]
-        //        let defaultStops = BusStations.init(stops: busStops)
+        //        let busStops:[BusStop] = [BusStop.init(atcocode: "5710AWA10617", mode: "bus", name: "Treharris Street", stop_name: "Treharris Street", smscode: "cdipaga", bearing: "SE", locality: "Roath", indicator: "o/s", longitude: -3.16913, latitude: 51.48983, distance: 61), BusStop.init(atcocode: "5710AWA10616", mode: "bus", name: "Northcote Lane", stop_name: "Northcote Lane", smscode: "cdimwmj", bearing: "NW", locality: "Roath", indicator: "o/s", longitude: -3.16972, latitude: 51.49001, distance: 99)]
+        //        let defaultStops = BusStop.init(stops: busStops)
         //        return stops ?? defaultStops
     }
 }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F767079202B66020074D848 /* BusStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F767078202B66020074D848 /* BusStation.swift */; };
+		4F767079202B66020074D848 /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F767078202B66020074D848 /* BusStop.swift */; };
 		4F8904A620372B3300C904BE /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8904A520372B3300C904BE /* LocationTests.swift */; };
 		4F8904A720372B3900C904BE /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDD046A202A1848002451EF /* Location.swift */; };
 		4F8904A920372D8D00C904BE /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBFD92C20310D7B000BFAF9 /* extensions.swift */; };
@@ -17,7 +17,7 @@
 		4F9E4B6F2073B5A900773368 /* SearchTimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E4B6E2073B5A900773368 /* SearchTimetableViewController.swift */; };
 		4F9E4B712073D98400773368 /* SearchBusStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E4B702073D98400773368 /* SearchBusStopViewController.swift */; };
 		4FBFD92D20310D7B000BFAF9 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBFD92C20310D7B000BFAF9 /* extensions.swift */; };
-		4FCB920D2076C365006396F2 /* BusStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F767078202B66020074D848 /* BusStation.swift */; };
+		4FCB920D2076C365006396F2 /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F767078202B66020074D848 /* BusStop.swift */; };
 		4FCB920F2077A2BE006396F2 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCB920E2077A2BE006396F2 /* TimetableViewController.swift */; };
 		7C119B9C2028BDFE0016BCDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9B2028BDFE0016BCDB /* AppDelegate.swift */; };
 		7C119B9E2028BDFE0016BCDB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9D2028BDFE0016BCDB /* FirstViewController.swift */; };
@@ -29,6 +29,8 @@
 		7C119BBE2028BDFF0016BCDB /* PublicTransportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119BBD2028BDFF0016BCDB /* PublicTransportUITests.swift */; };
 		7C249ACB207D7DFB00CE91D9 /* SavedTimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C249ACA207D7DFB00CE91D9 /* SavedTimetableViewController.swift */; };
 		7C54F85A2035D4000037E877 /* locationsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54F8592035D4000037E877 /* locationsHelper.swift */; };
+		7C6C9FCC207E5E4D00D3101F /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E4B6A206FDE9700773368 /* HttpClient.swift */; };
+		7C6C9FCD207E5E7400D3101F /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9E4B6C2072C96A00773368 /* Timetable.swift */; };
 		7C7DA65B203B3B1700591BA0 /* BusStationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7DA65A203B3B1700591BA0 /* BusStationTests.swift */; };
 		7C7DA65E203B41CE00591BA0 /* locationsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C54F8592035D4000037E877 /* locationsHelper.swift */; };
 		7CDD046B202A1848002451EF /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDD046A202A1848002451EF /* Location.swift */; };
@@ -54,7 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4F767078202B66020074D848 /* BusStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStation.swift; sourceTree = "<group>"; };
+		4F767078202B66020074D848 /* BusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
 		4F8904A520372B3300C904BE /* LocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
 		4F8904AA203740B800C904BE /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
 		4F9E4B6A206FDE9700773368 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
@@ -193,7 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				7CDD046A202A1848002451EF /* Location.swift */,
-				4F767078202B66020074D848 /* BusStation.swift */,
+				4F767078202B66020074D848 /* BusStop.swift */,
 				4F9E4B6C2072C96A00773368 /* Timetable.swift */,
 			);
 			path = Models;
@@ -342,7 +344,7 @@
 				4F9E4B6D2072C96A00773368 /* Timetable.swift in Sources */,
 				7C249ACB207D7DFB00CE91D9 /* SavedTimetableViewController.swift in Sources */,
 				7C119B9C2028BDFE0016BCDB /* AppDelegate.swift in Sources */,
-				4F767079202B66020074D848 /* BusStation.swift in Sources */,
+				4F767079202B66020074D848 /* BusStop.swift in Sources */,
 				4F9E4B6F2073B5A900773368 /* SearchTimetableViewController.swift in Sources */,
 				4F8904AB203740B800C904BE /* Variables.swift in Sources */,
 				4F9E4B6B206FDE9700773368 /* HttpClient.swift in Sources */,
@@ -359,14 +361,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C6C9FCC207E5E4D00D3101F /* HttpClient.swift in Sources */,
 				4F8904A920372D8D00C904BE /* extensions.swift in Sources */,
 				7C7DA65E203B41CE00591BA0 /* locationsHelper.swift in Sources */,
 				7CFC27E8203AE81400FED659 /* Variables.swift in Sources */,
 				4F8904A620372B3300C904BE /* LocationTests.swift in Sources */,
 				4F8904A720372B3900C904BE /* Location.swift in Sources */,
+				7C6C9FCD207E5E7400D3101F /* Timetable.swift in Sources */,
 				7C119BB32028BDFE0016BCDB /* PublicTransportTests.swift in Sources */,
 				7CFC27E7203AE63800FED659 /* LocationScenarios.swift in Sources */,
-				4FCB920D2076C365006396F2 /* BusStation.swift in Sources */,
+				4FCB920D2076C365006396F2 /* BusStop.swift in Sources */,
 				7C7DA65B203B3B1700591BA0 /* BusStationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
