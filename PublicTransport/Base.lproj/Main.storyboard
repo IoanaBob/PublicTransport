@@ -165,11 +165,11 @@
             </objects>
             <point key="canvasLocation" x="1552.8" y="-321.58920539730138"/>
         </scene>
-        <!--Seach Timetable-->
+        <!--Seach-->
         <scene sceneID="jFk-pv-Fvn">
             <objects>
                 <navigationController id="0YU-uN-x1n" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Seach Timetable" image="second" id="cR0-NX-ZNi"/>
+                    <tabBarItem key="tabBarItem" title="Seach" image="search" id="cR0-NX-ZNi"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="lnT-nA-Yc5">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -211,6 +211,7 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NRD-KV-JTj">
                                 <rect key="frame" x="310" y="249" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="onTintColor" red="0.20135295391082764" green="0.59399527311325073" blue="0.85877853631973267" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="switchIsChanged:" destination="4tq-9d-dML" eventType="valueChanged" id="AwF-97-TI1"/>
                                 </connections>
@@ -224,7 +225,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FzD-Iy-Ayr">
                                 <rect key="frame" x="279" y="546" width="80" height="40"/>
-                                <color key="backgroundColor" red="0.16810616060251368" green="0.51251136472725867" blue="0.88495790155440412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.088603906329999996" green="0.62188482280000001" blue="0.51745957139999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="A6n-4e-EpE"/>
                                     <constraint firstAttribute="width" constant="80" id="gAn-8u-kA3"/>
@@ -269,11 +270,11 @@
             </objects>
             <point key="canvasLocation" x="1548" y="354.87256371814095"/>
         </scene>
-        <!--Saved Timetables-->
+        <!--Saved-->
         <scene sceneID="u1O-K3-lH8">
             <objects>
                 <navigationController id="114-BX-X9w" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Saved Timetables" image="loved" id="6So-3r-2qg"/>
+                    <tabBarItem key="tabBarItem" title="Saved" image="loved" id="6So-3r-2qg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="hRL-wY-71o">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -414,6 +415,7 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SNA-VA-BYY">
                                 <rect key="frame" x="16" y="402" width="51" height="31"/>
+                                <color key="onTintColor" red="0.20135295389999999" green="0.5939952731" blue="0.85877853630000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="switchIsChanged:" destination="O1e-Ax-46l" eventType="valueChanged" id="zxX-ab-BcE"/>
                                 </connections>
@@ -432,7 +434,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTF-ro-aTB">
                                 <rect key="frame" x="279" y="546" width="80" height="40"/>
-                                <color key="backgroundColor" red="0.1681061606" green="0.51251136470000003" blue="0.88495790159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.088603906329999996" green="0.62188482280000001" blue="0.51745957139999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="WTS-5e-pj0"/>
                                     <constraint firstAttribute="height" constant="40" id="f6J-W6-A3e"/>
@@ -663,7 +665,7 @@
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                    <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -705,9 +707,9 @@
         <image name="direction" width="50" height="50"/>
         <image name="first" width="30" height="30"/>
         <image name="loved" width="25" height="25"/>
-        <image name="second" width="30" height="30"/>
+        <image name="search" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="J3a-1e-tdR"/>
+        <segue reference="0PL-mt-JEw"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -21,6 +21,9 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
         savedTableView.delaysContentTouches = false
         //savedTableView.addSubview(refreshControl)
         
+        // custom color to navifation (upper side)
+        self.navigationController?.navigationBar.tintColor = UIColor(rgb: 0x16a085)
+        
         for (key, value) in defaults.dictionaryRepresentation() {
             if (key.hasPrefix("timetable")) {
                 savedTimetables.append(value as! [String : String])

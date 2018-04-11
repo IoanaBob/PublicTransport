@@ -22,6 +22,11 @@ class SearchBusStopViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //custom color to tab (lower side)
+        self.tabBarController?.tabBar.tintColor = UIColor(rgb: 0x16a085)
+        // custom color to navifation (upper side)
+        self.navigationController?.navigationBar.tintColor = UIColor(rgb: 0x16a085)
+        //UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.orange]
     }
     
     @IBAction func buttonClicked(_ sender: UIButton) {
