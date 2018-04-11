@@ -107,9 +107,14 @@ class HttpClientApi: NSObject{
         }.resume()
     }
     
-    func getTimetable(atco: String, date: String, time: String, completionHandler: @escaping (Timetable?, Error?) -> Void) {
-        let endpoint = urlFor("/timetable/" + atco + "/" + date + "/" + time)
-        guard let url = URL(string: endpoint) else {
+    func getTimetable(atco: String, date: String, time: String, line: String, completionHandler: @escaping (Timetable?, Error?) -> Void) {
+        let endpoint:String?
+        if (line == "") {
+            endpoint = urlFor("/timetable/" + atco + "/" + date + "/" + time)
+        } else {
+            endpoint = urlFor("/timetable/" + atco + "/" + date + "/" + time + "/" + line)
+        }
+        guard let url = URL(string: endpoint!) else {
             print("Error: cannot create URL")
             let error = BackendError.urlError(reason: "Could not construct URL")
             completionHandler(nil, error)

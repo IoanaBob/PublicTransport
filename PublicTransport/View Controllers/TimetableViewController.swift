@@ -21,6 +21,7 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
     var atcocode: String?
     var dateField:String?
     var timeField:String?
+    var busLineNo:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,7 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        HttpClientApi().getTimetable(atco: atcocode!, date: dateField!, time: timeField!)
+        HttpClientApi().getTimetable(atco: atcocode!, date: dateField!, time: timeField!, line: busLineNo ?? "")
         { (receivedTimetable, error) in
             if let error = error {
                 self.alert(message: "Something went wrong. Please contact our team regarding this issue.", title: "Error")

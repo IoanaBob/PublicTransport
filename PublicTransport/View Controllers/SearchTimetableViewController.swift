@@ -73,6 +73,9 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
         destination.atcocode = selectedBusStop.atcocode
         destination.dateField = dateField.text!
         destination.timeField = timeField.text!
+        if (busLineSearchSwitch.isOn) {
+            destination.busLineNo = busLineField.text!
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
