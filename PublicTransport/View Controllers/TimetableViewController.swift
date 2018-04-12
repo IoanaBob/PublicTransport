@@ -86,7 +86,7 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.lineName.text = timetable!.all[indexPath.row].line_name
         cell.aimedDeparture.text = timetable!.all[indexPath.row].aimed_departure_time
         cell.direction.text = timetable!.all[indexPath.row].direction
-        cell.delay.text = String(describing: timetable!.all[indexPath.row].delay)
+        cell.delay.text = cell.delayString(from: timetable!.all[indexPath.row].delay)
         
         return cell
     }
@@ -129,6 +129,16 @@ class TimetableCell: UITableViewCell {
     @IBOutlet weak var aimedDeparture: UILabel!
     @IBOutlet weak var direction: UILabel!
     @IBOutlet weak var delay: UILabel!
+    
+    func delayString(from delay:Int) -> String {
+        if(delay == 0) {
+            return String(describing: delay)
+        }
+        if(delay > 0) {
+            return String(describing: delay) + " min late"
+        }
+        return String(describing: abs(delay)) + " min early"
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
