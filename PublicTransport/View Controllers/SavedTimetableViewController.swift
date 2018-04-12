@@ -60,6 +60,7 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
             destination.atcocode = savedTimetables[indexPath.row]["atcocode"]
             destination.dateField = savedTimetables[indexPath.row]["date"]
             destination.timeField = savedTimetables[indexPath.row]["time"]
+            destination.stopName = savedTimetables[indexPath.row]["name"]
         }
     }
 }

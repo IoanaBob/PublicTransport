@@ -113,9 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				4FBFD92C20310D7B000BFAF9 /* extensions.swift */,
+				4F9E4B6A206FDE9700773368 /* HttpClient.swift */,
 				7C54F8592035D4000037E877 /* locationsHelper.swift */,
 				4F8904AA203740B800C904BE /* Variables.swift */,
-				4F9E4B6A206FDE9700773368 /* HttpClient.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -180,10 +180,10 @@
 			isa = PBXGroup;
 			children = (
 				7C119B9D2028BDFE0016BCDB /* FirstViewController.swift */,
-				4F9E4B6E2073B5A900773368 /* SearchTimetableViewController.swift */,
-				4F9E4B702073D98400773368 /* SearchBusStopViewController.swift */,
-				4FCB920E2077A2BE006396F2 /* TimetableViewController.swift */,
 				7C249ACA207D7DFB00CE91D9 /* SavedTimetableViewController.swift */,
+				4F9E4B702073D98400773368 /* SearchBusStopViewController.swift */,
+				4F9E4B6E2073B5A900773368 /* SearchTimetableViewController.swift */,
+				4FCB920E2077A2BE006396F2 /* TimetableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -191,8 +191,8 @@
 		7C728538202A0DA10029C7D0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7CDD046A202A1848002451EF /* Location.swift */,
 				4F767078202B66020074D848 /* BusStop.swift */,
+				7CDD046A202A1848002451EF /* Location.swift */,
 				4F9E4B6C2072C96A00773368 /* Timetable.swift */,
 			);
 			path = Models;

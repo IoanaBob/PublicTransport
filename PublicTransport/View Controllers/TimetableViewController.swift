@@ -29,7 +29,7 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
         timetableTableView.delegate = self
         timetableTableView.dataSource = self
         
-        defaultsKey = "timetable-\(String(describing: timeField))-\(getDayOfWeek(dateField!))-\(String(describing: atcocode))"
+        defaultsKey = "timetable-\(String(describing: timeField!))-\(getDayOfWeek(dateField!))-\(String(describing: atcocode!))"
         addFavoritesButton()
     }
     
