@@ -21,15 +21,30 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
         savedTableView.delaysContentTouches = false
         //savedTableView.addSubview(refreshControl)
         
+        // custom color to navifation (upper side)
+        self.navigationController?.navigationBar.tintColor = UIColor(rgb: 0x16a085)
+        
         for (key, value) in defaults.dictionaryRepresentation() {
             if (key.hasPrefix("timetable")) {
                 savedTimetables.append(value as! [String : String])
             }
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        savedTableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:SavedCell = tableView.dequeueReusableCell(withIdentifier: "savedBusStopCell") as! SavedCell
-        cell.busStop.text = savedTimetables[indexPath.row]["atcocode"]
+        if (savedTimetables[indexPath.row]["bus_line"] == "") {
+            cell.busStop.text = savedTimetables[indexPath.row]["name"]
+        }
+        else {
+            cell.busStop.text = savedTimetables[indexPath.row]["name"]! + ", line " + savedTimetables[indexPath.row]["bus_line"]!
+            cell.busStopLabel.text = "Stop and Line"
+        }
         cell.time.text = savedTimetables[indexPath.row]["time"]
         cell.weekday.text = savedTimetables[indexPath.row]["weekday"]
         return cell
@@ -48,7 +63,7 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70.0
+        return 100.0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,6 +72,12 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
             destination.atcocode = savedTimetables[indexPath.row]["atcocode"]
             destination.dateField = savedTimetables[indexPath.row]["date"]
             destination.timeField = savedTimetables[indexPath.row]["time"]
+            destination.stopName = savedTimetables[indexPath.row]["name"]
+            destination.busLineNo = savedTimetables[indexPath.row]["bus_line"] ?? ""
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = "Back"
+            navigationItem.backBarButtonItem = backItem
         }
     }
 }
@@ -81,6 +102,7 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
 
 class SavedCell: UITableViewCell {
     @IBOutlet weak var busStop: UILabel!
+    @IBOutlet weak var busStopLabel: UILabel!
     @IBOutlet weak var weekday: UILabel!
     @IBOutlet weak var time: UILabel!
     

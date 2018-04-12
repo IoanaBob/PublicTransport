@@ -21,13 +21,15 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
     var atcocode: String?
     var dateField:String?
     var timeField:String?
+    var busLineNo:String?
+    var stopName:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         timetableTableView.delegate = self
         timetableTableView.dataSource = self
         
-        defaultsKey = "timetable-\(String(describing: timeField))-\(getDayOfWeek(dateField!))-\(String(describing: atcocode))"
+        defaultsKey = "timetable-\(String(describing: timeField!))-\(getDayOfWeek(dateField!))-\(String(describing: atcocode!))"
         addFavoritesButton()
     }
     
@@ -51,7 +53,7 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        HttpClientApi().getTimetable(atco: atcocode!, date: dateField!, time: timeField!)
+        HttpClientApi().getTimetable(atco: atcocode!, date: dateField!, time: timeField!, line: busLineNo ?? "")
         { (receivedTimetable, error) in
             if let error = error {
                 self.alert(message: "Something went wrong. Please contact our team regarding this issue.", title: "Error")
@@ -84,7 +86,7 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.lineName.text = timetable!.all[indexPath.row].line_name
         cell.aimedDeparture.text = timetable!.all[indexPath.row].aimed_departure_time
         cell.direction.text = timetable!.all[indexPath.row].direction
-        cell.delay.text = String(describing: timetable!.all[indexPath.row].delay)
+        cell.delay.text = cell.delayString(from: timetable!.all[indexPath.row].delay)
         
         return cell
     }
@@ -97,7 +99,13 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         else {
             // user wants to add to favorites
-            let valueToSave = ["atcocode": atcocode, "date": dateField, "time": timeField, "weekday": getDayOfWeek(dateField!)]
+            let valueToSave = ["atcocode": atcocode,
+                               "date": dateField,
+                               "time": timeField,
+                               "weekday": getDayOfWeek(dateField!),
+                               "bus_line": busLineNo ?? "",
+                               "name": stopName]
+            
             defaults.set(valueToSave, forKey: defaultsKey!)
             favoritesButton.setImage(UIImage(named: "loved"), for: UIControlState.normal)
         }
@@ -121,6 +129,16 @@ class TimetableCell: UITableViewCell {
     @IBOutlet weak var aimedDeparture: UILabel!
     @IBOutlet weak var direction: UILabel!
     @IBOutlet weak var delay: UILabel!
+    
+    func delayString(from delay:Int) -> String {
+        if(delay == 0) {
+            return String(describing: delay)
+        }
+        if(delay > 0) {
+            return String(describing: delay) + " min late"
+        }
+        return String(describing: abs(delay)) + " min early"
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

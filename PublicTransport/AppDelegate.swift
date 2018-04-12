@@ -19,7 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     private var startTime: Date?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let navBarAppearance = UINavigationBar.appearance()
+        navBarAppearance.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(rgb: 0x2c3e50)]
+        navBarAppearance.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(rgb: 0x2c3e50)]
+        navBarAppearance.barTintColor = UIColor(rgb: 0xFBF6DF)
+        
+        let tabBarAppearance = UITabBar.appearance()
+        tabBarAppearance.barTintColor = UIColor(rgb: 0xFBF6DF)
+        tabBarAppearance.tintColor = UIColor(rgb: 0x16a085)
+        tabBarAppearance.unselectedItemTintColor = UIColor.gray
         return true
     }
 

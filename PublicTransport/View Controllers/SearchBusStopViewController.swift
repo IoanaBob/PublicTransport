@@ -24,6 +24,10 @@ class SearchBusStopViewController: UIViewController {
         super.viewDidLoad()
         // hide keyboard if anyone clicks on the other side of the screen
         self.hideWhenTappedAround()
+
+        // custom color to navifation (upper side)
+        self.navigationController?.navigationBar.tintColor = UIColor(rgb: 0x16a085)
+        //UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.orange]
     }
     
     @IBAction func buttonClicked(_ sender: UIButton) {
@@ -39,14 +43,14 @@ class SearchBusStopViewController: UIViewController {
             HttpClientApi().getPostcode(postcode: postcode!) { (postcodeInfo, error) in
                 if let error = error {
                     print(error)
+                    DispatchQueue.main.async {
+                        self.postcodeInput.text = ""
+                        self.alert(message: "Postcode could not be found. Please try again.", title: "Invalid postcode")
+                    }
                     return
                 }
-                guard let postcodeInfo = postcodeInfo else {
-                    print("Error getting postcode.")
-                    return
-                }
-                self.latitude = postcodeInfo.result.latitude
-                self.longitude = postcodeInfo.result.longitude
+                self.latitude = postcodeInfo!.result.latitude
+                self.longitude = postcodeInfo!.result.longitude
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "searchBusStop", sender: self.findButton)
                 }
@@ -68,10 +72,11 @@ class SearchBusStopViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! SearchTimetableViewController
-        
         destination.busStops = getNearbyStops()
-        //destination.latitude = self.latitude!
-        //destination.longitude = self.longitude!
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
     }
     
     func isCorrectAddress() -> Bool {
@@ -103,7 +108,8 @@ class SearchBusStopViewController: UIViewController {
             group.leave()
         }
         group.wait()
-        return stops!
+        // do something when there are no stops
+        return stops ?? BusStops(stops: [])
     }
 }
 
