@@ -144,6 +144,43 @@ class HttpClientApi: NSObject{
         task.resume()
     }
     
+    func getPostcode(postcode: String, completionHandler: @escaping (Postcode?, Error?) -> Void) {
+        let endpoint = "http://api.postcodes.io/postcodes/" + postcode
+        guard let url = URL(string: endpoint) else {
+            print("Error: cannot create URL")
+            let error = BackendError.urlError(reason: "Could not construct URL")
+            completionHandler(nil, error)
+            return
+        }
+        let urlRequest = URLRequest(url: url)
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: urlRequest) {
+            (data, response, error) in
+            guard let responseData = data else {
+                print("Error: did not receive data")
+                completionHandler(nil, error)
+                return
+            }
+            guard error == nil else {
+                completionHandler(nil, error)
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let decodedData = try decoder.decode(Postcode.self, from: responseData)
+                print("decoded JSON data")
+                completionHandler(decodedData, nil)
+            } catch {
+                print("error trying to convert data to JSON")
+                print(error)
+                completionHandler(nil, error)
+            }
+        }
+        task.resume()
+    }
+    
     private func urlFor(_ path: String) -> String {
         return "https://gentle-falls-45144.herokuapp.com" + path
     }

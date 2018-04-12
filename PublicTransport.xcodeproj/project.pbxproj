@@ -19,6 +19,8 @@
 		4FBFD92D20310D7B000BFAF9 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBFD92C20310D7B000BFAF9 /* extensions.swift */; };
 		4FCB920D2076C365006396F2 /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F767078202B66020074D848 /* BusStop.swift */; };
 		4FCB920F2077A2BE006396F2 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCB920E2077A2BE006396F2 /* TimetableViewController.swift */; };
+		7C0B88C8207E817B00005A90 /* Postcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0B88C7207E817B00005A90 /* Postcode.swift */; };
+		7C0B88C9207E824000005A90 /* Postcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0B88C7207E817B00005A90 /* Postcode.swift */; };
 		7C119B9C2028BDFE0016BCDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9B2028BDFE0016BCDB /* AppDelegate.swift */; };
 		7C119B9E2028BDFE0016BCDB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9D2028BDFE0016BCDB /* FirstViewController.swift */; };
 		7C119BA02028BDFE0016BCDB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C119B9F2028BDFE0016BCDB /* SecondViewController.swift */; };
@@ -65,6 +67,7 @@
 		4F9E4B702073D98400773368 /* SearchBusStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBusStopViewController.swift; sourceTree = "<group>"; };
 		4FBFD92C20310D7B000BFAF9 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		4FCB920E2077A2BE006396F2 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
+		7C0B88C7207E817B00005A90 /* Postcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Postcode.swift; sourceTree = "<group>"; };
 		7C119B982028BDFE0016BCDB /* PublicTransport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PublicTransport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C119B9B2028BDFE0016BCDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C119B9D2028BDFE0016BCDB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +200,7 @@
 				7CDD046A202A1848002451EF /* Location.swift */,
 				4F767078202B66020074D848 /* BusStop.swift */,
 				4F9E4B6C2072C96A00773368 /* Timetable.swift */,
+				7C0B88C7207E817B00005A90 /* Postcode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -350,6 +354,7 @@
 				4F9E4B6B206FDE9700773368 /* HttpClient.swift in Sources */,
 				4FCB920F2077A2BE006396F2 /* TimetableViewController.swift in Sources */,
 				4F9E4B712073D98400773368 /* SearchBusStopViewController.swift in Sources */,
+				7C0B88C8207E817B00005A90 /* Postcode.swift in Sources */,
 				7CDD046B202A1848002451EF /* Location.swift in Sources */,
 				7C119B9E2028BDFE0016BCDB /* FirstViewController.swift in Sources */,
 				4FBFD92D20310D7B000BFAF9 /* extensions.swift in Sources */,
@@ -371,6 +376,7 @@
 				7C119BB32028BDFE0016BCDB /* PublicTransportTests.swift in Sources */,
 				7CFC27E7203AE63800FED659 /* LocationScenarios.swift in Sources */,
 				4FCB920D2076C365006396F2 /* BusStop.swift in Sources */,
+				7C0B88C9207E824000005A90 /* Postcode.swift in Sources */,
 				7C7DA65B203B3B1700591BA0 /* BusStationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
