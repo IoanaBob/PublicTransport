@@ -34,7 +34,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RbO-IC-Qkl">
-                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="busLeavingTimesCell" rowHeight="70" id="HqX-Sm-j9e" customClass="BusLeavingTimesCell" customModule="PublicTransport" customModuleProvider="target">
@@ -760,7 +760,6 @@
                     <connections>
                         <segue destination="0YU-uN-x1n" kind="relationship" relationship="viewControllers" id="RD9-vi-7OH"/>
                         <segue destination="114-BX-X9w" kind="relationship" relationship="viewControllers" id="WLw-u0-akI"/>
-                        <segue destination="akq-Ef-oam" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

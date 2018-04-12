@@ -24,6 +24,8 @@ class SearchBusStopViewController: UIViewController {
         super.viewDidLoad()
         // hide keyboard if anyone clicks on the other side of the screen
         self.hideWhenTappedAround()
+        
+        self.postcodeInput.delegate = self as? UITextFieldDelegate
 
         // custom color to navifation (upper side)
         self.navigationController?.navigationBar.tintColor = UIColor(rgb: 0x16a085)
@@ -59,6 +61,11 @@ class SearchBusStopViewController: UIViewController {
             //self.alert(message: "Postcode could not be found. Please try again.", title: "Invalid postcode")
             //postcodeInput.text = ""
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     @IBAction func switchIsChanged(_ sender: UISwitch) {

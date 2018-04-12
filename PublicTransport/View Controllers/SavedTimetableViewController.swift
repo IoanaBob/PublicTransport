@@ -19,21 +19,28 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
         savedTableView.delegate = self
         savedTableView.dataSource = self
         savedTableView.delaysContentTouches = false
-        //savedTableView.addSubview(refreshControl)
+        
+        savedTableView.addSubview(refreshControl)
         
         // custom color to navifation (upper side)
         self.navigationController?.navigationBar.tintColor = UIColor(rgb: 0x16a085)
         
+        appendToTimetables()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        savedTimetables = []
+        appendToTimetables()
+        savedTableView.reloadData()
+    }
+    
+    func appendToTimetables() {
         for (key, value) in defaults.dictionaryRepresentation() {
             if (key.hasPrefix("timetable")) {
                 savedTimetables.append(value as! [String : String])
             }
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
-        savedTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,25 +87,25 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
             navigationItem.backBarButtonItem = backItem
         }
     }
-}
     
-    //    lazy var refreshControl: UIRefreshControl = {
-    //        let refreshControl = UIRefreshControl()
-    //        refreshControl.addTarget(self, action:
-    //            #selector(FirstViewController.handleRefresh(_:)),
-    //                                 for: UIControlEvents.valueChanged)
-    //        refreshControl.tintColor = UIColor.purple
-    //
-    //        return refreshControl
-    //    }()
-    //
-    //    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-    //        self.busStopTimes = helper.loadObjectArray(forKey: "busStopTimes")
-    //        self.allLocations = helper.loadObjectArray(forKey: "allLocations")
-    //
-    //        self.busStopTimesTableView.reloadData()
-    //        refreshControl.endRefreshing()
-    //    }
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(FirstViewController.handleRefresh(_:)),
+                                 for: UIControlEvents.valueChanged)
+        refreshControl.tintColor = UIColor(rgb: 0x16a085)
+
+        return refreshControl
+    }()
+
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        savedTimetables = []
+        appendToTimetables()
+        self.savedTableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
+}
 
 class SavedCell: UITableViewCell {
     @IBOutlet weak var busStop: UILabel!
