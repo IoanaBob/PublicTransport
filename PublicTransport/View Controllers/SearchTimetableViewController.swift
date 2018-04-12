@@ -74,9 +74,11 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
         destination.stopName = selectedBusStop.name
         destination.dateField = dateField.text!
         destination.timeField = timeField.text!
-        if (busLineSearchSwitch.isOn) {
-            destination.busLineNo = busLineField.text!
-        }
+        destination.busLineNo = busLineField.text ?? ""
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

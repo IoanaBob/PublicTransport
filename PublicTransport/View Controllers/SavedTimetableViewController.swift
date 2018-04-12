@@ -30,9 +30,21 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
             }
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        savedTableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:SavedCell = tableView.dequeueReusableCell(withIdentifier: "savedBusStopCell") as! SavedCell
-        cell.busStop.text = savedTimetables[indexPath.row]["name"]
+        if (savedTimetables[indexPath.row]["bus_line"] == "") {
+            cell.busStop.text = savedTimetables[indexPath.row]["name"]
+        }
+        else {
+            cell.busStop.text = savedTimetables[indexPath.row]["name"]! + ", line " + savedTimetables[indexPath.row]["bus_line"]!
+            cell.busStopLabel.text = "Stop and Line"
+        }
         cell.time.text = savedTimetables[indexPath.row]["time"]
         cell.weekday.text = savedTimetables[indexPath.row]["weekday"]
         return cell
@@ -61,6 +73,11 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
             destination.dateField = savedTimetables[indexPath.row]["date"]
             destination.timeField = savedTimetables[indexPath.row]["time"]
             destination.stopName = savedTimetables[indexPath.row]["name"]
+            destination.busLineNo = savedTimetables[indexPath.row]["bus_line"] ?? ""
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = "Back"
+            navigationItem.backBarButtonItem = backItem
         }
     }
 }
@@ -85,6 +102,7 @@ class SavedTimetableViewController: UIViewController, UITableViewDelegate, UITab
 
 class SavedCell: UITableViewCell {
     @IBOutlet weak var busStop: UILabel!
+    @IBOutlet weak var busStopLabel: UILabel!
     @IBOutlet weak var weekday: UILabel!
     @IBOutlet weak var time: UILabel!
     

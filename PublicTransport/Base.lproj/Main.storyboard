@@ -338,7 +338,7 @@
                                                         <constraint firstAttribute="height" constant="34" id="MQu-oW-VM3"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delay" translatesAutoresizingMaskIntoConstraints="NO" id="Jgo-yA-jso">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="day" translatesAutoresizingMaskIntoConstraints="NO" id="Jgo-yA-jso">
                                                     <rect key="frame" x="154" y="57" width="34" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="Oyz-qJ-Z4o"/>
@@ -358,8 +358,8 @@
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wie-3i-RdK">
-                                                    <rect key="frame" x="196" y="55" width="28" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wie-3i-RdK">
+                                                    <rect key="frame" x="196" y="55" width="22" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -400,6 +400,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="busStop" destination="0yb-Ah-x48" id="fyk-J6-ewu"/>
+                                            <outlet property="busStopLabel" destination="FVc-cz-I2v" id="8xT-Hh-nND"/>
                                             <outlet property="time" destination="PTY-F1-DOH" id="pY3-eI-mJb"/>
                                             <outlet property="weekday" destination="Ex6-F8-gAY" id="Ubn-sU-3GE"/>
                                         </connections>
@@ -786,6 +787,7 @@
     <resources>
         <image name="bus" width="50" height="50"/>
         <image name="clock" width="50" height="50"/>
+        <image name="day" width="50" height="50"/>
         <image name="delay" width="50" height="50"/>
         <image name="direction" width="50" height="50"/>
         <image name="first" width="30" height="30"/>
@@ -793,6 +795,6 @@
         <image name="search" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0PL-mt-JEw"/>
+        <segue reference="J3a-1e-tdR"/>
     </inferredMetricsTieBreakers>
 </document>

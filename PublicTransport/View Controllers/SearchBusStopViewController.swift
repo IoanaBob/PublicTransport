@@ -22,8 +22,6 @@ class SearchBusStopViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //custom color to tab (lower side)
-        self.tabBarController?.tabBar.tintColor = UIColor(rgb: 0x16a085)
         // custom color to navifation (upper side)
         self.navigationController?.navigationBar.tintColor = UIColor(rgb: 0x16a085)
         //UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor.orange]
@@ -58,10 +56,11 @@ class SearchBusStopViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! SearchTimetableViewController
-        
         destination.busStops = getNearbyStops()
-        //destination.latitude = self.latitude!
-        //destination.longitude = self.longitude!
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
     }
     
     func isCorrectAddress() -> Bool {

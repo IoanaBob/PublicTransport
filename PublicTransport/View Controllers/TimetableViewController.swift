@@ -99,7 +99,13 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         else {
             // user wants to add to favorites
-            let valueToSave = ["atcocode": atcocode, "date": dateField, "time": timeField, "weekday": getDayOfWeek(dateField!), "name": stopName]
+            let valueToSave = ["atcocode": atcocode,
+                               "date": dateField,
+                               "time": timeField,
+                               "weekday": getDayOfWeek(dateField!),
+                               "bus_line": busLineNo ?? "",
+                               "name": stopName]
+            
             defaults.set(valueToSave, forKey: defaultsKey!)
             favoritesButton.setImage(UIImage(named: "loved"), for: UIControlState.normal)
         }
