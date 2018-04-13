@@ -60,9 +60,9 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
     
     @IBAction func switchIsChanged(_ sender: UISwitch) {
         if busLineSearchSwitch.isOn {
-            busLineField.text = ""
             setBusLineHidden(false)
         } else {
+            busLineField.text = ""
             setBusLineHidden(true)
         }
     }

@@ -72,25 +72,44 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return timetable?.all.count ?? 0
+        if (section == 0) {
+            return timetable?.all.count ?? 0
+        }
+        else {
+            return 1
+        }
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        if (indexPath.section == 0) {
+            return 100.0
+        }
+        else {
+            return 42.0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:TimetableCell = tableView.dequeueReusableCell(withIdentifier: "timetableCell") as! TimetableCell
-        cell.lineName.text = timetable!.all[indexPath.row].line_name
-        cell.aimedDeparture.text = timetable!.all[indexPath.row].aimed_departure_time
-        cell.direction.text = timetable!.all[indexPath.row].direction
-        cell.delay.text = cell.delayString(from: timetable!.all[indexPath.row].delay)
-        
-        return cell
+        if (indexPath.section == 0) {
+            let cell:TimetableCell = tableView.dequeueReusableCell(withIdentifier: "timetableCell") as! TimetableCell
+            cell.lineName.text = timetable!.all[indexPath.row].line_name
+            cell.aimedDeparture.text = timetable!.all[indexPath.row].aimed_departure_time
+            cell.direction.text = timetable!.all[indexPath.row].direction
+            cell.delay.text = cell.delayString(from: timetable!.all[indexPath.row].delay)
+            return cell
+        }
+        else {
+            let cell:InfoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell") as! InfoCell
+            return cell
+        }
     }
-    
+
     @objc func changedFavorite() {
         if (defaults.object(forKey: defaultsKey!) != nil) {
             // user wants to remove from favorites
@@ -143,4 +162,14 @@ class TimetableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+}
+
+class InfoCell: UITableViewCell {
+    @IBOutlet weak var infoButton: UIButton!
+    
+    @IBAction func infoButtonClicked(_ sender: UIButton) {
+        //UIApplication.shared.keyWindow?.rootViewController?.present(refreshAlert, animated: true, completion: nil)
+        //TimetableViewController().alert(message: "Unknown - delay is unknown;\nPossibly - Based on 1 to 19 commuter experiences;\nProbably - Based on 20 or over commuter experiences.", title: "Info")
+    }
+    
 }

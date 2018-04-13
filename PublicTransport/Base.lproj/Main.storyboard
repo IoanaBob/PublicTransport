@@ -728,6 +728,74 @@
                                             <outlet property="lineName" destination="nYX-dg-jrR" id="jHa-fH-eVU"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="infoCell" id="0MG-Cf-sSp" customClass="InfoCell" customModule="PublicTransport" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="128" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0MG-Cf-sSp" id="CUX-8s-vgb">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty_circle" translatesAutoresizingMaskIntoConstraints="NO" id="lDc-Gq-zs5">
+                                                    <rect key="frame" x="16" y="10.5" width="25" height="25"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filled_circle" translatesAutoresizingMaskIntoConstraints="NO" id="xdC-tJ-wR6">
+                                                    <rect key="frame" x="227" y="9.5" width="25" height="25"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="half_filled_circle" translatesAutoresizingMaskIntoConstraints="NO" id="HgR-Z4-L9s">
+                                                    <rect key="frame" x="125" y="10.5" width="25" height="25"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKE-rZ-Z91">
+                                                    <rect key="frame" x="48" y="13" width="65" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Possibly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziN-PR-zg7">
+                                                    <rect key="frame" x="158" y="13.5" width="57" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Probably" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dO0-ZJ-nbb">
+                                                    <rect key="frame" x="260" y="13" width="61" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xax-hD-ghB">
+                                                    <rect key="frame" x="329" y="7" width="30" height="30"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
+                                                    <state key="normal" title="I"/>
+                                                    <connections>
+                                                        <action selector="infoButtonClicked:" destination="0MG-Cf-sSp" eventType="touchUpInside" id="UlS-VS-NQQ"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xdC-tJ-wR6" firstAttribute="top" secondItem="HgR-Z4-L9s" secondAttribute="top" constant="-1" id="3qE-iq-JaC"/>
+                                                <constraint firstItem="xax-hD-ghB" firstAttribute="baseline" secondItem="dO0-ZJ-nbb" secondAttribute="baseline" id="DJS-CE-Hjt"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dO0-ZJ-nbb" secondAttribute="trailing" constant="20" symbolic="YES" id="EUa-iy-BZg"/>
+                                                <constraint firstItem="HgR-Z4-L9s" firstAttribute="top" secondItem="lDc-Gq-zs5" secondAttribute="top" id="HhS-bS-snx"/>
+                                                <constraint firstItem="lDc-Gq-zs5" firstAttribute="leading" secondItem="CUX-8s-vgb" secondAttribute="leading" constant="16" id="QDs-3S-BAV"/>
+                                                <constraint firstItem="dO0-ZJ-nbb" firstAttribute="centerY" secondItem="xdC-tJ-wR6" secondAttribute="centerY" id="T2o-N8-Jz7"/>
+                                                <constraint firstItem="HgR-Z4-L9s" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DKE-rZ-Z91" secondAttribute="trailing" constant="8" symbolic="YES" id="TiT-Qp-z7N"/>
+                                                <constraint firstItem="xdC-tJ-wR6" firstAttribute="leading" secondItem="ziN-PR-zg7" secondAttribute="trailing" constant="12" id="UuA-n3-ikC"/>
+                                                <constraint firstItem="HgR-Z4-L9s" firstAttribute="top" secondItem="ziN-PR-zg7" secondAttribute="top" constant="-3" id="b0n-IF-7Qr"/>
+                                                <constraint firstItem="xax-hD-ghB" firstAttribute="centerY" secondItem="CUX-8s-vgb" secondAttribute="centerY" id="cZa-zi-sW2"/>
+                                                <constraint firstItem="dO0-ZJ-nbb" firstAttribute="baseline" secondItem="DKE-rZ-Z91" secondAttribute="baseline" id="ea0-Lm-g4J"/>
+                                                <constraint firstItem="HgR-Z4-L9s" firstAttribute="leading" secondItem="CUX-8s-vgb" secondAttribute="leading" constant="125" id="fLk-pU-coh"/>
+                                                <constraint firstItem="ziN-PR-zg7" firstAttribute="leading" secondItem="HgR-Z4-L9s" secondAttribute="trailing" constant="8" id="hU1-PA-tWD"/>
+                                                <constraint firstItem="DKE-rZ-Z91" firstAttribute="leading" secondItem="CUX-8s-vgb" secondAttribute="leading" constant="48" id="lhY-Ir-iTf"/>
+                                                <constraint firstAttribute="trailing" secondItem="xax-hD-ghB" secondAttribute="trailing" constant="16" id="nKV-S7-EB0"/>
+                                                <constraint firstItem="dO0-ZJ-nbb" firstAttribute="leading" secondItem="xdC-tJ-wR6" secondAttribute="trailing" constant="8" id="o43-1N-2WI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="infoButton" destination="xax-hD-ghB" id="KxZ-XV-1x4"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -792,7 +860,10 @@
         <image name="day" width="50" height="50"/>
         <image name="delay" width="50" height="50"/>
         <image name="direction" width="50" height="50"/>
+        <image name="empty_circle" width="25" height="25"/>
+        <image name="filled_circle" width="25" height="25"/>
         <image name="first" width="30" height="30"/>
+        <image name="half_filled_circle" width="25" height="25"/>
         <image name="loved" width="25" height="25"/>
         <image name="search" width="25" height="25"/>
     </resources>

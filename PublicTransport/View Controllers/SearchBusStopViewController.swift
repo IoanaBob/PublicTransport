@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchBusStopViewController: UIViewController {
+class SearchBusStopViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var postcodeInput: UITextField!
     @IBOutlet weak var currentLocationSwitch: UISwitch!
@@ -25,7 +25,7 @@ class SearchBusStopViewController: UIViewController {
         // hide keyboard if anyone clicks on the other side of the screen
         self.hideWhenTappedAround()
         
-        self.postcodeInput.delegate = self as? UITextFieldDelegate
+        self.postcodeInput.delegate = self
 
         // custom color to navifation (upper side)
         self.navigationController?.navigationBar.tintColor = UIColor(rgb: 0x16a085)
@@ -40,7 +40,7 @@ class SearchBusStopViewController: UIViewController {
             performSegue(withIdentifier: "searchBusStop", sender: findButton)
         }
         else {
-            let postcode = postcodeInput.text
+            let postcode = postcodeInput.text?.removingWhitespaces()
             
             HttpClientApi().getPostcode(postcode: postcode!) { (postcodeInfo, error) in
                 if let error = error {
