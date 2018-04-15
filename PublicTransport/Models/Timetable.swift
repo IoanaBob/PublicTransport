@@ -21,6 +21,7 @@ struct TimetableItem: Codable {
     let id: String
     let source: String
     let delay: Int
+    let record_count: Int
 }
 
 struct Timetable: Codable {

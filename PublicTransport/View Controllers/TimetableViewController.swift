@@ -87,6 +87,8 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        
         if (indexPath.section == 0) {
             return 100.0
         }
@@ -102,10 +104,13 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.aimedDeparture.text = timetable!.all[indexPath.row].aimed_departure_time
             cell.direction.text = timetable!.all[indexPath.row].direction
             cell.delay.text = cell.delayString(from: timetable!.all[indexPath.row].delay)
+            cell.reliabilityIcon.image = setReliabilityImage(delay: timetable!.all[indexPath.row].record_count)
             return cell
         }
         else {
             let cell:InfoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell") as! InfoCell
+            cell.delegate = self
+            cell.infoButton.setImage(UIImage(named: "info"), for: UIControlState.normal)
             return cell
         }
     }
@@ -140,6 +145,17 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
         let weekDay = myComponents.weekday
         return days[weekDay! - 1]
     }
+    
+    private func setReliabilityImage(delay: Int) -> UIImage {
+        switch delay {
+        case 0:
+            return UIImage(named: "empty_circle")!
+        case 1...20:
+            return UIImage(named: "half_filled_circle")!
+        default:
+            return UIImage(named: "filled_circle")! // 20 to infinite
+        }
+    }
 }
 
 class TimetableCell: UITableViewCell {
@@ -148,6 +164,7 @@ class TimetableCell: UITableViewCell {
     @IBOutlet weak var aimedDeparture: UILabel!
     @IBOutlet weak var direction: UILabel!
     @IBOutlet weak var delay: UILabel!
+    @IBOutlet weak var reliabilityIcon: UIImageView!
     
     func delayString(from delay:Int) -> String {
         if(delay == 0) {
@@ -165,9 +182,11 @@ class TimetableCell: UITableViewCell {
 }
 
 class InfoCell: UITableViewCell {
+    var delegate:UIViewController?
     @IBOutlet weak var infoButton: UIButton!
     
     @IBAction func infoButtonClicked(_ sender: UIButton) {
+        delegate?.alert(message: "Unknown - delay is unknown;\nPossibly - Based on 1 to 19 commuter experiences;\nProbably - Based on 20 or over commuter experiences.", title: "Info")
         //UIApplication.shared.keyWindow?.rootViewController?.present(refreshAlert, animated: true, completion: nil)
         //TimetableViewController().alert(message: "Unknown - delay is unknown;\nPossibly - Based on 1 to 19 commuter experiences;\nProbably - Based on 20 or over commuter experiences.", title: "Info")
     }
