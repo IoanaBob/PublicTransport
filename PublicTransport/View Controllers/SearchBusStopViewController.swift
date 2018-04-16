@@ -71,8 +71,10 @@ class SearchBusStopViewController: UIViewController, UITextFieldDelegate {
     @IBAction func switchIsChanged(_ sender: UISwitch) {
         if currentLocationSwitch.isOn {
             postcodeInput.text = ""
+            postcodeInput.placeholder = "Disabled"
             postcodeInput.isUserInteractionEnabled = false
         } else {
+            postcodeInput.placeholder = ""
             postcodeInput.isUserInteractionEnabled = true
         }
     }

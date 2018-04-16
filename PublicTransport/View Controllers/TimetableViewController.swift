@@ -103,7 +103,7 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.lineName.text = timetable!.all[indexPath.row].line_name
             cell.aimedDeparture.text = timetable!.all[indexPath.row].aimed_departure_time
             cell.direction.text = timetable!.all[indexPath.row].direction
-            cell.delay.text = cell.delayString(from: timetable!.all[indexPath.row].delay)
+            cell.delay.text = cell.delayString(from: timetable!.all[indexPath.row].delay, count: timetable!.all[indexPath.row].record_count)
             cell.reliabilityIcon.image = setReliabilityImage(delay: timetable!.all[indexPath.row].record_count)
             return cell
         }
@@ -149,7 +149,7 @@ class TimetableViewController: UIViewController, UITableViewDelegate, UITableVie
     private func setReliabilityImage(delay: Int) -> UIImage {
         switch delay {
         case 0:
-            return UIImage(named: "empty_circle")!
+            return UIImage(named: "transparent")!
         case 1...20:
             return UIImage(named: "half_filled_circle")!
         default:
@@ -166,7 +166,10 @@ class TimetableCell: UITableViewCell {
     @IBOutlet weak var delay: UILabel!
     @IBOutlet weak var reliabilityIcon: UIImageView!
     
-    func delayString(from delay:Int) -> String {
+    func delayString(from delay:Int, count: Int) -> String {
+        if (count == 0) {
+            return "Unknown"
+        }
         if(delay == 0) {
             return String(describing: delay)
         }
@@ -186,9 +189,7 @@ class InfoCell: UITableViewCell {
     @IBOutlet weak var infoButton: UIButton!
     
     @IBAction func infoButtonClicked(_ sender: UIButton) {
-        delegate?.alert(message: "Unknown - delay is unknown;\nPossibly - Based on 1 to 19 commuter experiences;\nProbably - Based on 20 or over commuter experiences.", title: "Info")
-        //UIApplication.shared.keyWindow?.rootViewController?.present(refreshAlert, animated: true, completion: nil)
-        //TimetableViewController().alert(message: "Unknown - delay is unknown;\nPossibly - Based on 1 to 19 commuter experiences;\nProbably - Based on 20 or over commuter experiences.", title: "Info")
+        delegate?.alert(message: "Possibly - Based on 1 to 19 commuter experiences;\nProbably - Based on 20 or over commuter experiences.", title: "Info")
     }
     
 }
