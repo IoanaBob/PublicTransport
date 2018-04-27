@@ -242,12 +242,12 @@ class Locations {
         if locations.last! == loc { return false }
         // conditions based on walking/driving distance
         if (loc.nearestBusStop?.distance ?? -1) > 200 {
-            if (timeFromLastLocation(loc) > 60 && loc.currentSpeed <= walkingSpeedTreshold) || (timeFromLastLocation(loc) > 30 && loc.currentSpeed > walkingSpeedTreshold) {
+            if (timeFromLastLocation(loc) > 40 && loc.currentSpeed <= walkingSpeedTreshold) || (timeFromLastLocation(loc) > 20 && loc.currentSpeed > walkingSpeedTreshold) {
                 return true
             }
         }
         else {
-            if (timeFromLastLocation(loc) > 30 && loc.currentSpeed <= walkingSpeedTreshold) || (timeFromLastLocation(loc) > 15 && loc.currentSpeed > walkingSpeedTreshold) {
+            if (timeFromLastLocation(loc) > 20 && loc.currentSpeed <= walkingSpeedTreshold) || (timeFromLastLocation(loc) > 10 && loc.currentSpeed > walkingSpeedTreshold) {
                 return true
             }
         }

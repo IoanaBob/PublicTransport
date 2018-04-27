@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         locationManager = CLLocationManager()
         locationManager.delegate = self as CLLocationManagerDelegate
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 2
+        locationManager.distanceFilter = 5
         locationManager.allowsBackgroundLocationUpdates = true
         
         locationManager.requestAlwaysAuthorization()
