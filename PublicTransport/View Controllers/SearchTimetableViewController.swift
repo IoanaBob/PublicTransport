@@ -55,6 +55,10 @@ class SearchTimetableViewController: UIViewController, UIPickerViewDelegate, UIP
     }
 
     @IBAction func buttonClicked(_ sender: UIButton) {
+        if (busStopField.text == "" || dateField.text == "" || timeField.text == "") {
+            self.alert(message: "Please choose a bus stop, a date and a time before continuing.", title: "Uncomplete information")
+            return
+        }
         self.performSegue(withIdentifier: "searchTimetable", sender: self.findButton)
     }
     

@@ -74,7 +74,7 @@ class SearchBusStopViewController: UIViewController, UITextFieldDelegate {
             postcodeInput.placeholder = "Disabled"
             postcodeInput.isUserInteractionEnabled = false
         } else {
-            postcodeInput.placeholder = ""
+            postcodeInput.placeholder = "CF12 345"
             postcodeInput.isUserInteractionEnabled = true
         }
     }
