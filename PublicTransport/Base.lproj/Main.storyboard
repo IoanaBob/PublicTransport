@@ -15,7 +15,7 @@
         <!--Bus Leaving Times-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="PublicTransport" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="busLeavingTimes" id="9pv-A4-QxB" customClass="FirstViewController" customModule="PublicTransport" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,7 +34,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RbO-IC-Qkl">
-                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="busLeavingTimesCell" rowHeight="70" id="HqX-Sm-j9e" customClass="BusLeavingTimesCell" customModule="PublicTransport" customModuleProvider="target">
@@ -828,25 +828,6 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Test stuff-->
-        <scene sceneID="9ae-LF-OoK">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="akq-Ef-oam" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Test stuff" image="first" id="acW-dT-cKf"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="NmW-ZO-meH">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="YZo-31-rM2"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D4c-p0-6hh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="748.79999999999995" y="-320.23988005997006"/>
-        </scene>
     </scenes>
     <resources>
         <image name="bus" width="50" height="50"/>
@@ -856,7 +837,6 @@
         <image name="direction" width="50" height="50"/>
         <image name="empty_circle" width="25" height="25"/>
         <image name="filled_circle" width="25" height="25"/>
-        <image name="first" width="30" height="30"/>
         <image name="half_filled_circle" width="25" height="25"/>
         <image name="loved" width="25" height="25"/>
         <image name="search" width="25" height="25"/>

@@ -40,7 +40,7 @@ struct LocationScenarios {
     
     func addArrivingStation3(locs: Locations) {
         locs.locations.append(Location.init(lat: 0.55, long: 0.55, nearestBusStop: InitBusStop(distance: 30, number: 3), note: .none, currentSpeed: 6))
-        locs.locations.append(Location.init(lat: 0.57, long: 0.58, nearestBusStop: InitBusStop(distance: 15, number: 3), note: .none, currentSpeed: 1))
+        locs.locations.append(Location.init(lat: 0.57, long: 0.58, nearestBusStop: InitBusStop(distance: 26, number: 3), note: .none, currentSpeed: 1))
         locs.locations.append(Location.init(lat: 0.6, long: 0.6, nearestBusStop: InitBusStop(distance: 2, number: 3), note: .none, currentSpeed: 0.2))
     }
     

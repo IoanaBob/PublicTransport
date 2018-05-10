@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import PublicTransport
 
 class PublicTransportTests: XCTestCase {
     

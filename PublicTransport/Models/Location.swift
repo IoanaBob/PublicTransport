@@ -54,7 +54,7 @@ struct Location: Codable, Equatable {
     func isWaitingInStation() -> Bool {
         guard existentBusStop() else {return false}
         // walking speed and within 10 meters of bus station
-        return currentSpeed <= walkingSpeedTreshold && nearestBusStop!.distance <= 10
+        return currentSpeed <= walkingSpeedTreshold && nearestBusStop!.within25Meters() == true
     }
     
     func isInVehicle() -> Bool {
@@ -92,8 +92,8 @@ class Locations {
                     print(self.locations)
                     self.saveToDefaults(self.locations)
                 }
+                Variables.requestingNearestBusStops = false
             }
-            Variables.requestingNearestBusStops = false
         }
     }
     
@@ -212,7 +212,7 @@ class Locations {
             // when arriving in station checks against all previous locations
             if inVehicle && nextLoc.isWaitingInStation() {
                 nextLoc.note = .arrivedStation
-                lastStationIndex = locations.index(of: loc)!
+                lastStationIndex = locations.index(of: nextLoc)!
                 inStationAtLocations.append(nextLoc)
             }
         }
